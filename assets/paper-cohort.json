@@ -1,0 +1,15 @@
+{
+  "visual": 2.076386850466686,
+  "current": 0.7274155056309263,
+  "reduction_percent": 64.96724560418818,
+  "metric": "Native first-publication whole-trajectory independent Sim(3)-aligned camera-center ATE RMSE, metres",
+  "aggregation": "Average three fresh-process repetitions within each of the 17 fixed sequences, then equally weight sequence means. Reduction calculated from unrounded aggregate means, not a mean of per-sequence percentages.",
+  "scope": [
+    "This is an aggregate system comparison, not an isolated IMU on/off effect.",
+    "Sim(3) alignment evaluates trajectory shape and cannot establish absolute metric-scale accuracy.",
+    "Do not imply improvement on every sequence: 15 of 17 sequence means and 46 of 51 executions improve.",
+    "This fixed historically exposed cohort is not a training-distribution separation or universal generalization claim.",
+    "Keep the Sim(3) aggregate title visible when transitioning from single-sequence rigid SE(3) trajectory examples."
+  ],
+  "total_common_GT_frames": 126045
+}
