@@ -1,10 +1,39 @@
 VIStream: KITTI reproduction guide
 
-This web page provides instructions, not the multi-gigabyte code/model/environment archive.
-Obtain the complete VIStream_KITTI_Reproduction_20261012 package separately.
-It requires Linux x86_64, an NVIDIA GPU and driver, raw KITTI odometry images,
-camera calibration/times, raw IMU, and external ground truth for evaluation only.
-Datasets and precomputed prediction trajectories are not in the reproduction package.
+RELEASE DOWNLOAD AND ARCHIVE RESTORATION
+
+Release page:
+https://github.com/CN-MingZheLiu/vistream/releases/tag/kitti-reproduction-20261012
+
+This guide accompanies the complete code/model/environment package. The website
+source itself does not contain the multi-gigabyte reproduction archive.
+
+The original VIStream_KITTI_Reproduction_20261012.zip is 11,167,525,236 bytes.
+It is distributed as six binary parts, each at most 1,900,000,000 bytes (under
+2 GB), named VIStream_KITTI_Reproduction_20261012.zip.part01 through .part06.
+These are consecutive pieces of one ZIP, not six independently extractable ZIPs.
+Download all six parts and both checksum files into the same directory, then run:
+
+  sha256sum -c SHA256SUMS.parts.txt
+  cat VIStream_KITTI_Reproduction_20261012.zip.part01 \
+      VIStream_KITTI_Reproduction_20261012.zip.part02 \
+      VIStream_KITTI_Reproduction_20261012.zip.part03 \
+      VIStream_KITTI_Reproduction_20261012.zip.part04 \
+      VIStream_KITTI_Reproduction_20261012.zip.part05 \
+      VIStream_KITTI_Reproduction_20261012.zip.part06 \
+      > VIStream_KITTI_Reproduction_20261012.zip
+  sha256sum -c SHA256SUMS.zip.txt
+  unzip VIStream_KITTI_Reproduction_20261012.zip
+
+On macOS, use shasum -a 256 -c in place of sha256sum -c. The resulting ZIP must
+match the published checksum before extraction. Part checksums detect incomplete
+or corrupted downloads; the ZIP checksum verifies the exact reconstructed archive.
+
+QUICK START
+
+The package requires Linux x86_64, an NVIDIA GPU and driver, raw KITTI odometry
+images, camera calibration/times, raw IMU, and external ground truth for evaluation
+only. Datasets and precomputed prediction trajectories are not included.
 
 After extracting the complete package:
   cd /path/to/VIStream_KITTI_Reproduction_20261012
@@ -23,74 +52,102 @@ Floating-point kernels and native scheduling can change results. Report each act
 run; do not pick a run to match the reference. The browser visualization is replay,
 not new model inference and not evidence of inference throughput.
 
-Detailed original Chinese package instructions follow.
+DETAILED PACKAGE INSTRUCTIONS
 =======================================================================
 
-本包已完成的验证（请先读）
+Completed validation: read this first
 
-已从包内离线环境归档恢复，并从原始KITTI图像/IMU跑完00–10：132/132阶段成功。
-本次新推理平均ATE为loop-off 15.25 m、loop-on 9.10 m；此前修复目标为
-15.08/10.41 m。完整流程运行通过，但逐项目标数值未精确复现，验收状态为
-NOT_REPRODUCED。不能将此包宣传为已精确复现旧表或原论文全部数字。
-具体全表及证据见QA/验证结果.txt、QA/FULL_KITTI_VALIDATION.json。
+The bundled offline environment was restored from its archive. Fresh inference
+from raw KITTI images and IMU completed sequences 00–10: 132/132 stages succeeded.
+The new run achieved mean ATE of 15.25 m with loop closure off and 9.10 m with loop
+closure on, versus the earlier repaired target of 15.08/10.41 m. The complete
+pipeline ran successfully, but its individual values did not exactly match the
+target. The numerical acceptance status is NOT_REPRODUCED. This package must not
+be described as exactly reproducing the earlier table or all original paper values.
+See QA/验证结果.txt and QA/FULL_KITTI_VALIDATION.json for the full table and evidence.
+The first path retains its original filename inside the archive.
 
-VIStream KITTI 完整重推理包使用说明
+VIStream KITTI complete fresh-inference package
 
-本包对应2026-10-12完成的KITTI修复配置，参考结果是全11条序列的
-loop-off平均ATE 15.08083551911737 m、loop-on平均ATE 10.406424994970628 m。
-本包对应修复后的实验配置，和原论文表16.52/9.53的冻结配置不同。
-最终准入包含整段序列的一致性检查，属于离线修复配置。
-这些数字来自已完成的一次运行；本包的用途是从原始传感器重新执行同一套
-模型、准入和融合流程，并记录实际得到的结果，不保证未来运行逐项相同。
+This package corresponds to the KITTI repair configuration completed on 2026-10-12.
+Its reference results, averaged over all 11 sequences, are loop-off ATE
+15.08083551911737 m and loop-on ATE 10.406424994970628 m.
+This repaired configuration differs from the frozen configuration underlying the
+original paper's 16.52/9.53 table. Its final admission rule includes whole-sequence
+consistency checks, making this an offline repair configuration.
+The reference values come from one completed run. The package is intended to rerun
+the same models, admission rules, and fusion pipeline from raw sensors and record
+the resulting measurements. It does not guarantee identical values in future runs.
 
-固定种子也不能消除当前DPVO浮点聚合、自定义BA和原生线程调度的全部波动。
-不得通过挑选多次运行、删除序列、更换采样或修改验收容差制造数值匹配。
-格式测试、环境导入测试和单序列运行成功都不能替代完整11序列验证。
-包的实际验证进度与结果以随包QA记录和新运行的评估报告为准。
+Fixed seeds do not eliminate all variation in the current DPVO floating-point
+aggregation, custom bundle adjustment, and native thread scheduling. Do not create
+an apparent match by selecting among repeated runs, removing sequences, changing
+sampling, or relaxing acceptance tolerances. Format tests, environment import
+checks, and a successful single-sequence run do not replace full 11-sequence
+validation. Use the bundled QA records and each new run's evaluation report to
+determine the package's actual validation status and results.
 
-1. 包含什么
+1. Package contents
 
-包含本配置使用的VIStream、LingBot-Map、DPVO、DROID等源码，必需模型权重、
-ORB词袋、相机/IMU配套配置、编译扩展、修复后的原生库、离线Python环境归档，
-以及生成、封存和独立评分工具。第三方来源与实际保留源码使用清单和SHA256
-核验；原来的Git元数据已去除，避免把仓库中的样例GT、IMU和深度数据带入包。
+The package includes the VIStream, LingBot-Map, DPVO, DROID, and other source code
+used by this configuration; required model checkpoints; the ORB vocabulary;
+camera/IMU configurations; compiled extensions; repaired native libraries; an
+offline Python environment archive; and tools for generation, sealing, and
+independent evaluation. Manifests and SHA256 hashes verify third-party provenance
+and the retained source. Original Git metadata were removed to avoid including
+sample ground truth, IMU, or depth data from repository history.
 
-不包含KITTI图像、原始IMU、GT或旧预测轨迹。参考分数仅用于生成结束后的
-独立对照，推理不依赖它们。无需再提供旧的trajectory.npz或candidate文件。
+KITTI images, raw IMU, ground truth, and old prediction trajectories are excluded.
+Reference scores are used only for independent comparison after generation; they
+are not inputs to inference. No old trajectory.npz or candidate files are needed.
 
-2. 运行环境
+2. Runtime requirements
 
-运行基线为Linux Ubuntu 22.04、x86_64、glibc 2.35和NVIDIA GPU。
-原验证机器使用H20-3e、NVIDIA驱动550.127.08；Python环境为Torch 2.8.0+cu128。
-主机必须有支持该环境的NVIDIA驱动，驱动本身不由Python环境归档安装。
-运行入口检查实际加载的Torch/CUDA计算库来自包内；CUDA驱动与系统ABI库
-允许来自主机。模型推理不下载网络资源。
+The validated baseline is Linux Ubuntu 22.04, x86_64, glibc 2.35, and an NVIDIA GPU.
+The validation machine used H20-3e GPUs and NVIDIA driver 550.127.08; the Python
+environment contains Torch 2.8.0+cu128. The host must provide an NVIDIA driver
+compatible with this environment. The Python environment archive does not install
+the driver. The runner verifies that the loaded Torch/CUDA computation libraries
+come from the package; the CUDA driver and system ABI libraries may come from the
+host. Model inference does not download network resources.
 
-macOS可以存放、下载或解压ZIP，不能直接运行这里的Linux CUDA二进制。
-请为包、环境解压和运行输出预留至少40 GB空间，数据集空间另计。
-环境归档约6.54 GB，解压环境约12 GB；主要视觉权重约4.63 GB。
+macOS can store, download, or extract the ZIP, but cannot run these Linux CUDA
+binaries. Reserve at least 40 GB for the package, extracted environment, and run
+outputs, in addition to dataset storage. The environment archive is approximately
+6.54 GB, the extracted environment approximately 12 GB, and the main visual
+checkpoint approximately 4.63 GB. Keeping both downloaded release parts and the
+restored ZIP requires additional temporary disk space.
 
-以下命令均在包根目录执行，路径中的/path/to需要替换为实际目录。
-若交付为两个ZIP，将两部分解压到同一父目录，得到一份完整包目录。
+Run the following commands from the package root, replacing /path/to with your
+actual directories. An earlier delivery used two independently extractable ZIP
+archives; those must be extracted into the same parent directory. That earlier
+two-archive format is different from this release's six .zip.partNN files, which
+must first be concatenated as described above.
 
-3. 离线恢复环境
+3. Restore the offline environment
 
   cd /path/to/VIStream_KITTI_Reproduction_20261012
   python3 scripts/bootstrap.py
 
-bootstrap校验环境归档，从归档恢复runtime/envs/lingbot-map，执行conda-unpack，
-并修正可编辑依赖的路径，使推理进程在隔离命名空间的/bundle内加载包内源码。
-恢复完成后不要移动已经解压的环境；如需迁移包，先保留旧目录，再在新的包
-解压目录重新bootstrap。正常使用不需要--repair-existing；它仅供开发验证。
+Bootstrap verifies the environment archive, restores runtime/envs/lingbot-map,
+runs conda-unpack, and fixes editable-dependency paths so inference processes load
+the bundled source under /bundle in the isolated namespace.
+Do not move the extracted environment after restoration. To relocate the package,
+retain the old directory and run bootstrap again in a newly extracted package
+directory. Normal use does not require --repair-existing; that option is intended
+only for development validation.
 
-runtime/bootstrap_receipt.json中的extracted_from_archive=true表示本次确实
-从环境归档解压。环境恢复成功只说明安装步骤完成，还需要下面的运行预检。
+extracted_from_archive=true in runtime/bootstrap_receipt.json records that this
+restoration actually extracted the environment archive. Successful restoration
+confirms installation only; the runtime preflight below is still required.
 
-4. 准备数据和预检
+4. Prepare the data and run preflight
 
-数据格式详见docs/DATASET_LAYOUT.txt。图像/相机时间/标定放在KITTI odometry
-目录，原始IMU另放一个目录；GT只在评分时提供。03没有匹配IMU是本配置的
-规定行为，不要补零、复制别的序列或自行填入03的IMU文件。
+See docs/DATASET_LAYOUT.txt for the exact layout. Put images, camera timestamps,
+and calibration in the KITTI odometry directory, and raw IMU in a separate
+directory. Supply ground truth only during evaluation. Sequence 03 intentionally
+has no matching IMU in this configuration: do not zero-fill it, copy another
+sequence's IMU, or supply an improvised sequence-03 IMU file.
 
   python3 scripts/run_kitti.py \
     --kitti-root /path/to/kitti_odometry/dataset \
@@ -100,12 +157,15 @@ runtime/bootstrap_receipt.json中的extracted_from_archive=true表示本次确�
     --native-workers 1 \
     --preflight-only
 
-每个--run-root必须尚不存在。预检也会建立自己的目录，因此正式推理要使用
-另一个新目录。预检检查资产、原始图像支持、必需文件、环境与扩展加载等。
-IMU的列定义、单位和相机时间对齐仍必须符合数据说明；文件存在不等于内容
-已经正确。错误记录保留在运行目录，不自动覆盖或挑选重试。
+Each --run-root must not already exist. Preflight creates its own directory, so
+full inference requires another new directory. Preflight checks assets, raw image
+support, required files, and environment/extension loading. IMU column definitions,
+units, and camera-time alignment must still follow the dataset instructions: the
+presence of a file does not establish that its contents are correct. Error records
+remain in the run directory; the runner does not overwrite them or automatically
+select among retries.
 
-5. 全11序列从原始输入重新推理
+5. Rerun all 11 sequences from raw inputs
 
   python3 scripts/run_kitti.py \
     --kitti-root /path/to/kitti_odometry/dataset \
@@ -114,44 +174,60 @@ IMU的列定义、单位和相机时间对齐仍必须符合数据说明；文�
     --gpus 0 \
     --native-workers 1
 
-默认执行00至10的全部11条序列，每条12个阶段，共132个阶段回执：
-visual、raw_imu、loop_geometry、translation、router、dpvo、droid、base、
-orb_off、fusion_off、orb_on、fusion_on。
+The default run covers all 11 sequences, 00 through 10, with 12 stages per sequence
+and 132 stage receipts in total:
+visual, raw_imu, loop_geometry, translation, router, dpvo, droid, base,
+orb_off, fusion_off, orb_on, fusion_on.
 
-这些名字是输出目录中的程序阶段名。先重新计算视觉和基础运动候选，再使用
-原生ORB轨迹与最终准入规则生成两种条件的结果。允许无依赖的计算并行，但
-融合只能读取同一次运行中已完成的上游结果。不会从旧实验目录补齐缺失结果。
+These are program stage names in the output directory. The runner first recomputes
+visual and base-motion candidates, then uses native ORB trajectories and the final
+admission rules to produce the two loop-closure conditions. Independent tasks may
+run concurrently, but fusion can read only completed upstream outputs from that
+same run. Missing outputs are not filled from earlier experiment directories.
 
-建议以单GPU、--native-workers 1开始，保持原生ORB串行。多GPU可用
---gpus GPU-UUID-1,GPU-UUID-2，或不同的CUDA编号；每个GPU承担一个序列任务。
-增加GPU或原生进程并行数会改变调度，必须保留真实运行参数，不因此声称
-参考数值必然相同。显存/CPU/运行时长由序列和机器决定，以实际日志为准。
+Start with one GPU and --native-workers 1 to keep native ORB runs serial. Multiple
+GPUs can be specified as --gpus GPU-UUID-1,GPU-UUID-2 or as distinct CUDA indices;
+each GPU handles one sequence task. Increasing GPU or native-process concurrency
+changes scheduling. Preserve the actual parameters and do not claim that a
+different schedule guarantees identical reference values. GPU memory, CPU demand,
+and runtime depend on the sequence and machine; consult the actual logs.
 
---sequences 04等子集选项仅用于诊断，不会取得完整复现封存或完整表验收。
-需要全表结果时必须不指定该选项，或明确提供全部00至10。
+Subset options such as --sequences 04 are for diagnostics only. They do not obtain
+full-reproduction sealing or full-table acceptance. For the complete table, omit
+this option or explicitly include every sequence from 00 through 10.
 
-本配置保留生成时使用的benchmark_c2w位姿解释，并另存opencv_c2w供检查；
-不要在复现入口擅自改用另一个key。视觉采样为每6帧并保留末帧，运动专家
-使用完整逐帧图像后返回相同评估支持。最终准入只在基础选择器采用原生DPVO
-位姿时检查R²和局部尺度一致性；阈值及原混合权重随包固定。
+This configuration preserves the benchmark_c2w pose interpretation used during
+generation and separately saves opencv_c2w for inspection. Do not substitute a
+different key in the reproduction entry point. Visual sampling uses every sixth
+frame and retains the final frame. Motion experts process the full image sequence
+and return the same evaluation support. Final admission checks R² and local scale
+consistency only when the base selector chooses native DPVO poses. The thresholds
+and original blending weights are fixed in the package.
 
-原生启动失败、崩溃或超时会使本次运行失败。当前完整验收只允许一种明确的
-无效ORB候选：原生正常退出且完整导出后，原时间戳检查拒绝非递增时间戳；
-这种情况保存真实拒绝证据，再由规定回退路径继续。不得把缺库或空运行当回退。
+A native launch failure, crash, or timeout fails the run. Full acceptance currently
+permits only one explicitly defined invalid ORB candidate: after a normal native
+exit and complete export, the original timestamp validator rejects non-increasing
+timestamps. The runner preserves evidence of this rejection and continues through
+the specified fallback. Missing libraries or empty executions are not valid
+fallback cases.
 
-6. 封存完成后，单独评分
+6. Evaluate separately after sealing
 
-完整生成入口会自动运行seal。成功后应存在：
+The complete generation entry point runs seal automatically. A successful seal
+creates:
   /path/to/runs/kitti_full_001/PREDICTIONS_SEALED_BEFORE_GT.json
 
-seal检查132个阶段回执、33条visual/off/on预测、精确采样、来源记录和哈希，
-不读取GT。不要在已有seal上重复执行seal，也不要修改封存后的任何输入证据
-或输出文件。只有自动封存尚未执行且完整生成材料齐备时，才手动使用：
+Seal checks all 132 stage receipts, 33 visual/off/on predictions, exact sampling,
+provenance records, and hashes without reading ground truth. Do not reseal an
+already sealed run or alter any sealed input evidence or output files. Use the
+manual command only if automatic sealing has not run and all required generation
+materials are complete:
 
   runtime/envs/lingbot-map/bin/python evaluation/verify_results.py seal \
     --run-root /path/to/runs/kitti_full_001
 
-准备用户自有的KITTI poses/00.txt至10.txt后，在生成命名空间外执行：
+After obtaining your own KITTI poses/00.txt through 10.txt, run evaluation outside
+the generation namespace:
 
   runtime/envs/lingbot-map/bin/python evaluation/verify_results.py evaluate \
     --run-root /path/to/runs/kitti_full_001 \
@@ -162,24 +238,33 @@ seal检查132个阶段回执、33条visual/off/on预测、精确采样、来源�
     --run-root /path/to/runs/kitti_full_001 \
     --report-dir /path/to/reports/kitti_full_001
 
-report-dir使用一个新目录。评分采用每条轨迹独立Sim(3)对齐的位置ATE RMSE，
-再对11条序列等权平均。它不是全帧SE(3)误差。评分器核对GT文件哈希，并在
-评分前后检查封存预测未变；GT文件不要重排、改精度或重新保存。
+Use a new report-dir. Evaluation computes positional ATE RMSE after independent
+Sim(3) alignment for each trajectory, then takes an equally weighted average over
+the 11 sequences. This is not an all-frame SE(3) error. The evaluator verifies
+ground-truth file hashes and checks that sealed predictions remain unchanged before
+and after scoring. Do not reorder, change precision, or resave the GT files.
 
-7. 如何读结果
+7. Interpret the results
 
-生成成功、封存成功和完成评分是三个不同的状态。evaluate返回成功不意味着
-新结果等于参考结果。查看report-dir/EVALUATION.json中的实际全表分数，以及
-VERIFICATION.json中的逐项差值和status。
+Successful generation, successful sealing, and completed evaluation are distinct
+states. A successful evaluate command does not establish that new scores equal the
+reference. Read the actual full-table scores in report-dir/EVALUATION.json and the
+per-item differences and status in VERIFICATION.json.
 
-REPRODUCED：本次fresh运行的33项结果均在固定1e-8 m容差内匹配参考值，且
-完整性检查通过。NOT_REPRODUCED：实际新运行不满足这一数值条件，仍保留全部
-真实分数；程序不会自动挑另一轮结果。两位小数相同的数量另行报告，不与严格
-容差匹配混淆。REFERENCE_RECOMPUTE_MATCH只代表参考缓存复算，不能称新推理。
+REPRODUCED means that all 33 results from this fresh run match the references within
+the fixed 1e-8 m tolerance and all integrity checks pass. NOT_REPRODUCED means that
+the fresh run does not satisfy this numerical criterion; all actual scores remain
+available, and the program does not automatically choose another run. The number
+of matches after rounding to two decimals is reported separately from strict
+tolerance matching. REFERENCE_RECOMPUTE_MATCH indicates only recomputation of
+cached reference outputs; it is not fresh inference.
 
-seal/evaluate成功的退出码为0；verify数值不匹配或仍待审查时返回3；缺失阶段、
-哈希/支持/来源错误等返回2。访问审计类型namespace_mounts表示隔离挂载审查，
-不会冒充完整系统调用追踪。更多评分合同细节见evaluation/README.txt。
+Successful seal/evaluate commands exit with code 0. Verify returns 3 for a numerical
+mismatch or a result still requiring review. Missing stages or invalid hashes,
+sampling support, or provenance return 2. An access-audit type of namespace_mounts
+means an isolated-mount review, not a complete system-call trace. See
+evaluation/README.txt for further details of the evaluation contract.
 
-如果新运行不同于15.08/10.41，应交付实际全表、差值和运行记录。不要以本说明、
-单序列测试或环境测试替代数值验收结论。
+If a new run differs from 15.08/10.41, report its actual full table, differences,
+and run records. This guide, a single-sequence test, or an environment check cannot
+replace the numerical acceptance result.
