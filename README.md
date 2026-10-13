@@ -1,38 +1,63 @@
 # VIStream · GitHub Pages
 
-VIStream 研究项目网站的独立 GitHub Pages 源代码，包含视频、论文、实验结果与交互轨迹演示。
+Standalone GitHub Pages source for the VIStream research website, including the research film, paper, experimental results, and interactive trajectory demonstrations.
 
-网站地址：[https://cn-mingzheliu.github.io/vistream/](https://cn-mingzheliu.github.io/vistream/)
+Website: [https://cn-mingzheliu.github.io/vistream/](https://cn-mingzheliu.github.io/vistream/)
 
-源码仓库：[CN-MingZheLiu/vistream](https://github.com/CN-MingZheLiu/vistream)。发布状态以仓库的 Actions 运行结果为准。
+Source repository: [CN-MingZheLiu/vistream](https://github.com/CN-MingZheLiu/vistream). The repository's Actions runs show the current deployment status.
 
-## 部署
+## Reproduction package
 
-1. 在你自己的 GitHub 账号下创建公开仓库 `vistream`，将这个目录的内容提交到 `main` 分支。需要包含隐藏文件 `.github/workflows/pages.yml` 和 `.nojekyll`。
-2. 在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。
-3. 在 **Actions** 中运行 **Deploy VIStream to GitHub Pages**；之后向 `main` 推送更改会自动发布。
-4. 等待部署成功，在该工作流或仓库 Pages 设置中打开 GitHub 给出的正式地址。
+[KITTI reproduction release: kitti-reproduction-20261012](https://github.com/CN-MingZheLiu/vistream/releases/tag/kitti-reproduction-20261012)
 
-工作流使用 GitHub 官方 Pages Actions。部署时，`configure-pages` 返回真实 `base_url`，构建脚本据此设置 canonical、Open Graph URL 和预览图的绝对 URL。网站中的图片、视频、脚本、论文和数据引用均采用相对路径，可以直接部署在 `/vistream/` 或其他项目路径下。
+The complete code, checkpoints, and offline environment are distributed as release assets, separately from this website source. Datasets and precomputed prediction trajectories are excluded. The original archive is VIStream_KITTI_Reproduction_20261012.zip (11,167,525,236 bytes).
 
-## 本地预览和检查
+The release splits that ZIP into six ordered binary parts, VIStream_KITTI_Reproduction_20261012.zip.part01 through .part06, each at most 1,900,000,000 bytes (under 2 GB). **These parts are not independent ZIP files.** Download all six parts and both checksum files into one directory, verify the parts, concatenate them in order, and verify the restored ZIP:
 
-在本目录运行：
+~~~sh
+sha256sum -c SHA256SUMS.parts.txt
+cat VIStream_KITTI_Reproduction_20261012.zip.part01 \
+    VIStream_KITTI_Reproduction_20261012.zip.part02 \
+    VIStream_KITTI_Reproduction_20261012.zip.part03 \
+    VIStream_KITTI_Reproduction_20261012.zip.part04 \
+    VIStream_KITTI_Reproduction_20261012.zip.part05 \
+    VIStream_KITTI_Reproduction_20261012.zip.part06 \
+    > VIStream_KITTI_Reproduction_20261012.zip
+sha256sum -c SHA256SUMS.zip.txt
+unzip VIStream_KITTI_Reproduction_20261012.zip
+~~~
 
-```sh
+On macOS, replace sha256sum -c with shasum -a 256 -c. Inference requires Linux and an NVIDIA GPU; macOS can download, verify, and extract the files. See [the full reproduction guide](assets/reproduction-guide.txt) for dataset layout, environment restoration, inference, and evaluation.
+
+The packaged configuration completed a fresh run of all 11 KITTI sequences and 132 stages, with mean Sim(3) ATE of **15.25 m with loop closure off** and **9.10 m with loop closure on**. It did **not** exactly reproduce the earlier repaired **15.08 / 10.41 m** result. This later offline repair configuration is distinct from the original paper cohort; the archive is not a claim of exact numerical reproduction of every paper result.
+
+## Deployment
+
+1. Commit this directory's contents to the main branch of a public vistream repository. Include the hidden files .github/workflows/pages.yml and .nojekyll.
+2. In **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**.
+3. Under **Actions**, run **Deploy VIStream to GitHub Pages**. Subsequent pushes to main deploy automatically.
+4. Once deployment succeeds, open the official URL shown by the workflow or the repository's Pages settings.
+
+The workflow uses GitHub's official Pages Actions. During deployment, configure-pages supplies the actual base_url, which the build script uses for the canonical URL, Open Graph URL, and absolute preview-image URL. Images, videos, scripts, the paper, and data use relative paths, so the site works under /vistream/ or another project path.
+
+## Local preview and validation
+
+Run from this directory:
+
+~~~sh
 python3 scripts/verify_site.py
 python3 -m http.server 8000
-```
+~~~
 
-然后打开 `http://localhost:8000/`。请使用 HTTP 预览；直接双击 HTML 文件会导致浏览器限制 JSON 数据的加载。
+Then open http://localhost:8000/. Use an HTTP server for previewing; opening the HTML file directly can prevent the browser from loading JSON data.
 
-构建脚本只发布 `index.html`、`app.js`、`style.css`、`.nojekyll` 和 `assets/`。README、工作流、QA 报告及辅助脚本不会出现在部署产物中。
+The build publishes only index.html, app.js, style.css, .nojekyll, and assets/. The README, workflow, QA reports, and helper scripts are excluded from the deployed artifact.
 
-## 内容与证据
+## Content and evidence
 
-- 完整保留原网站的视频、论文、图片、字幕、交互轨迹数据、结果表和复现说明。
-- 实验文件没有重新计算或修改；本次仅迁移托管方式并更新部署元数据。
-- 网页上的轨迹展示是已记录结果的回放。完整的模型权重与离线推理环境仍属于另行交付的复现包，本网站源代码并不包含那份 11 GB 复现包。
-- `QA/STATIC_VALIDATION.json` 记录静态链接检查；`QA/ASSET_PRESERVATION.json` 记录与原网站文件逐项比较的 SHA256；`QA/BUILD_PROJECT_PATH_TEST.json` 记录项目子路径构建检查。
+- The website retains the original videos, paper, images, subtitles, interactive trajectory data, result tables, and reproduction instructions.
+- Experimental data have not been recalculated or altered during the hosting migration. Changes concern deployment metadata and documentation.
+- The browser demonstrations replay recorded trajectories. Fresh model inference is performed by the separate reproduction package, not by the web demo.
+- QA/STATIC_VALIDATION.json records static-link checks; QA/ASSET_PRESERVATION.json records SHA256 comparisons with the original website at migration time; QA/BUILD_PROJECT_PATH_TEST.json records project-path build checks. These are migration snapshots, not verification reports for later documentation edits.
 
-此目录无需 npm、第三方 CDN、访问令牌或服务端。GitHub 工作流使用平台提供的权限，不需要把个人密钥写入代码。
+The site requires no npm packages, third-party CDN, personal access token, or server-side application. Its GitHub workflow uses platform-provided permissions; personal credentials must not be committed to the source.
