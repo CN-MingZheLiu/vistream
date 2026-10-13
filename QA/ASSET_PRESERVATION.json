@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "file": "app.js",
+      "sha256": "cd1699bd7d2abec9ab7bd16c45380b3bdf043108649e6d0811933b3be60ad5f4",
+      "unchanged": true
+    },
+    {
+      "file": "assets/VIStream-paper.pdf",
+      "sha256": "fbae4e9c5da00a875ff5ecd929bf9e9b8b39b151d5ee38778c87e960cb775c62",
+      "unchanged": true
+    },
+    {
+      "file": "assets/favicon.svg",
+      "sha256": "2ba0785eb1997fc5aacadba0d6a59ae21bbedb5aa3b4ad2b5fe9b8a555ec7251",
+      "unchanged": true
+    },
+    {
+      "file": "assets/hero-loop.mp4",
+      "sha256": "14e63c67bfe15f248515621e7396f8e736f71984a6c019970559ef4237093b56",
+      "unchanged": true
+    },
+    {
+      "file": "assets/kitti-results.json",
+      "sha256": "9a186613312d315919a4ed7ce4255702888ad811cebf23c4c6a3483548a9c44a",
+      "unchanged": true
+    },
+    {
+      "file": "assets/mh05.jpg",
+      "sha256": "92cf78022d32aca3010c18ed7438f5604ba8e1888eda66fbddc2939a06943ef9",
+      "unchanged": true
+    },
+    {
+      "file": "assets/oxford.jpg",
+      "sha256": "1dd5dfa355121f039f59e9aa71c1b39c474ff8aea1c537bad2071ae673e6780f",
+      "unchanged": true
+    },
+    {
+      "file": "assets/paper-cohort.json",
+      "sha256": "2f5d375152bcd2e6961b1b143b448ee0a3a1a22cce2da704763210ef381c1d81",
+      "unchanged": true
+    },
+    {
+      "file": "assets/pipeline.png",
+      "sha256": "682ec23583790aee9e109a0858aee10f2bfe72574984b6490411244582c44d81",
+      "unchanged": true
+    },
+    {
+      "file": "assets/poster.jpg",
+      "sha256": "4fef23da91256720f9287c7ed1d73539a25cc579412ae4ee5408f93f88616a01",
+      "unchanged": true
+    },
+    {
+      "file": "assets/reproduction-guide.txt",
+      "sha256": "364f97ce898ffb39a051f96f786902b01926d61f52c148734085eab2aad94979",
+      "unchanged": true
+    },
+    {
+      "file": "assets/research-film.mp4",
+      "sha256": "cd4e1665322108507468073a1d33fd1f0fb09a59f62a7c1dd10b97e8447ac888",
+      "unchanged": true
+    },
+    {
+      "file": "assets/subtitles-en.vtt",
+      "sha256": "4df8dca780cc19d47197e71e74ef7af62b5e4a96754aaeede156483b4573f33d",
+      "unchanged": true
+    },
+    {
+      "file": "assets/trajectories.json",
+      "sha256": "c7cbb180b9ff76d2fa9b61812dbbad1dcbc3627cb5415822e7347fff234b54ce",
+      "unchanged": true
+    },
+    {
+      "file": "style.css",
+      "sha256": "401a15ae851ceee900cd974263375d07cfb77392f3ff8a5e8972f41ea990655b",
+      "unchanged": true
+    }
+  ],
+  "index_html_change": "Only hosting metadata: remove old absolute OG image URL; add deployment metadata marker."
+}

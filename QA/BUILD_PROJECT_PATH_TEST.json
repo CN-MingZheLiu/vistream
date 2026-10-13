@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "site": "/private/var/folders/03/gtvrgt9d6rj7kfrnnh8hmxcw0000gn/T/vistream-pages-test-x6pqkk5g/vistream",
+  "local_resources_checked": [
+    "app.js",
+    "assets/VIStream-paper.pdf",
+    "assets/favicon.svg",
+    "assets/hero-loop.mp4",
+    "assets/kitti-results.json",
+    "assets/paper-cohort.json",
+    "assets/pipeline.png",
+    "assets/poster.jpg",
+    "assets/reproduction-guide.txt",
+    "assets/research-film.mp4",
+    "assets/subtitles-en.vtt",
+    "assets/trajectories.json",
+    "style.css"
+  ],
+  "external_urls": [
+    "https://pages-test.invalid/vistream/",
+    "https://pages-test.invalid/vistream/assets/poster.jpg"
+  ],
+  "total_bytes": 21408350,
+  "largest_files": [
+    [
+      "assets/research-film.mp4",
+      18788649
+    ],
+    [
+      "assets/VIStream-paper.pdf",
+      1063072
+    ],
+    [
+      "assets/hero-loop.mp4",
+      439158
+    ],
+    [
+      "assets/pipeline.png",
+      320971
+    ],
+    [
+      "assets/oxford.jpg",
+      288771
+    ],
+    [
+      "assets/poster.jpg",
+      252239
+    ]
+  ],
+  "errors": [],
+  "scope": "Static resource, anchor, project-path portability and common plaintext credential-pattern checks. No remote deployment or browser runtime is claimed."
+}
