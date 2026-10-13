@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VIStream · Bringing Inertial Sensing to Streaming Geometry</title>
+  <meta name="description" content="VIStream brings calibrated visual–inertial motion to frozen streaming geometric models. Explore measured trajectories, the method, and reproducibility results.">
+  <meta name="theme-color" content="#fafaf8">
+  <meta property="og:title" content="VIStream — Frozen geometry. Calibrated motion.">
+  <meta property="og:description" content="Bringing inertial sensing to streaming geometric foundation models for SLAM.">
+  <meta property="og:image" content="assets/poster.jpg">
+  <!-- github-pages:deployment-metadata -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#method">Skip to content</a>
+<header class="nav-shell"><nav class="nav" aria-label="Main navigation">
+  <a href="#" class="brand" aria-label="VIStream home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 8l9 17L29 5M13 7l6 12"/></svg>VIStream<span class="brand-note">RESEARCH</span></a>
+  <div class="nav-links"><a href="#method">Method</a><a href="#demo">Demo</a><a href="#results">Results</a><a href="#reproduce">Resources <span aria-hidden="true">↗</span></a></div>
+</nav></header>
+<main>
+<section class="hero wrap" aria-labelledby="title">
+  <p class="eyebrow"><span class="tiny-line"></span> VISUAL–INERTIAL SLAM</p>
+  <h1 id="title">VI<span>Stream</span><span class="title-dot">.</span></h1>
+  <h2 class="hero-subtitle">Bringing Inertial Sensing to<br>Streaming Geometric Foundation Models</h2>
+  <p class="hero-description">Frozen geometry. Calibrated motion.<br class="mobile-only"> A more accurate camera trajectory.</p>
+  <div class="resource-pills">
+    <a href="assets/VIStream-paper.pdf" target="_blank" rel="noopener" class="pill primary"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2h7l4 4v12H5zM12 2v5h4M8 11h5M8 14h5"/></svg>Paper <span>↗</span></a>
+    <button class="pill" data-open-film><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4l9 6-9 6z"/></svg>Watch the film</button>
+    <a href="#demo" class="pill"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 14l4-7 5 6 7-10M2 18h16"/></svg>Explore results</a>
+    <a href="#reproduce" class="pill"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5L2 10l5 5m6-10 5 5-5 5M11 3L9 17"/></svg>Reproduce</a>
+  </div>
+  <div class="hero-media">
+    <video id="hero-video" poster="assets/poster.jpg" muted loop playsinline preload="metadata" aria-label="VIStream recorded research demonstration"></video>
+    <button class="hero-play" data-open-film aria-label="Play the two-minute VIStream research film"><span class="play-circle">▶</span><span>See the difference<span class="play-sub">2 MINUTE RESEARCH FILM</span></span></button>
+    <button id="hero-motion" class="motion-button" aria-label="Pause background video" hidden>Ⅱ</button>
+    <span class="media-note">Recorded experiments · visualization replay</span>
+  </div>
+  <div class="hero-caption"><span>Streaming input. Consistent motion.</span><span class="legend"><i class="dot blue"></i>LingBot-Map<i class="dot orange"></i>VIStream<i class="dash"></i>Ground truth</span></div>
+</section>
+
+<section id="method" class="section wrap">
+  <div class="section-heading"><p class="eyebrow">01 / METHOD</p><h2>Keep the geometry.<br><span class="muted">Give motion a metric reference.</span></h2></div>
+  <p class="lead">Streaming visual models capture rich geometry. VIStream connects that geometry to calibrated visual–inertial motion—aligning coordinate frames, maintaining a persistent scale, and integrating valid motion updates into a camera trajectory.</p>
+  <button class="pipeline-image" id="pipeline-open" aria-label="Enlarge the VIStream pipeline"><img src="assets/pipeline.png" alt="VIStream pipeline: streaming RGB and synchronized IMU, frozen LingBot-Map geometry, calibration, motion admission, integration and metric camera trajectory." loading="lazy"><span>Explore the pipeline <b>↗</b></span></button>
+  <div class="method-steps">
+    <article><span class="step-num">01</span><h3>Calibrate</h3><p>Bring visual and inertial motion into the same camera frame, with one persistent metric scale.</p></article>
+    <article><span class="step-num">02</span><h3>Select valid motion</h3><p>Check rotation and translation support across tracking epochs and interruptions.</p></article>
+    <article><span class="step-num">03</span><h3>Integrate & continue</h3><p>Accumulate eligible motion. Use visual continuation when expert motion is unavailable.</p></article>
+  </div>
+</section>
+
+<section id="demo" class="section demo-section">
+<div class="wrap">
+  <div class="section-heading"><p class="eyebrow">02 / INTERACTIVE DEMO</p><h2>Watch the trajectory<br><span class="muted">stay closer to the reference.</span></h2></div>
+  <p class="lead">Select a recorded sequence. Replay both methods on the same coordinate system, or overlay them to inspect the difference.</p>
+  <div class="scene-tabs" role="tablist" aria-label="Recorded sequence"><button id="tab-mh05" class="scene-tab active" data-scene="mh05" role="tab" aria-selected="true" aria-controls="trajectory-panel"><span class="scene-index">01</span><strong>EuRoC MH05</strong><span>Fast motion · difficult</span></button><button id="tab-v203" class="scene-tab" data-scene="v203" role="tab" aria-selected="false" aria-controls="trajectory-panel" tabindex="-1"><span class="scene-index">02</span><strong>EuRoC V2_03</strong><span>Repeated turns · difficult</span></button><button id="tab-kitti06" class="scene-tab" data-scene="kitti06" role="tab" aria-selected="false" aria-controls="trajectory-panel" tabindex="-1" hidden><span class="scene-index">03</span><strong>KITTI 06</strong><span>Outdoor driving · new rerun</span></button></div>
+  <div class="trajectory-viewer" id="trajectory-panel" role="tabpanel" aria-labelledby="tab-mh05">
+    <div class="viewer-top"><span><i class="live-dot"></i><strong id="scene-title">EuRoC MH05 difficult</strong><small id="scene-caption">Recorded trajectory replay</small></span><div class="segmented" aria-label="Trajectory display"><button id="compare" class="selected" aria-pressed="true">Compare</button><button id="overlay" aria-pressed="false">Overlay</button></div></div>
+    <div class="plot-labels" id="plot-labels"><span><i class="dot blue"></i>LingBot-Map</span><span><i class="dot orange"></i>VIStream</span></div>
+    <canvas id="trajectory" aria-label="Measured LingBot-Map and VIStream trajectories compared with dashed ground truth"></canvas>
+    <div class="viewer-score"><div><small>LingBot-Map</small><strong id="visual-ate">5.93 <em>m</em></strong></div><div><small>VIStream</small><strong class="orange-text" id="current-ate">0.32 <em>m</em></strong></div><div class="viewer-gain"><strong id="case-gain">94.6%</strong><small>lower ATE on this sequence</small></div></div>
+    <div class="viewer-controls"><button id="replay-toggle" aria-label="Pause trajectory replay">Ⅱ</button><button id="restart" aria-label="Restart trajectory replay">↺</button><input id="scrubber" type="range" min="0" max="1000" value="1000" aria-label="Trajectory replay position"><span id="replay-time">101.5 s</span><label class="speed-label"><span class="sr-only">Replay speed</span><select id="speed"><option value="0.5">0.5× replay</option><option value="1" selected>1× replay</option><option value="2">2× replay</option></select></label></div>
+    <div class="viewer-bottom"><span><i class="dash"></i>Ground truth · same axes for both methods</span><span>Display playback ≠ inference speed</span></div>
+  </div>
+  <p id="case-protocol" class="protocol">SE(3) ATE · first recorded repetition · fixed rigid alignment over shared support · no scale fitting.</p>
+  <p id="data-error" class="data-error" role="alert" hidden>Trajectory data could not be loaded. Please reload the page.</p>
+</div></section>
+
+<section id="results" class="section wrap">
+  <div class="section-heading"><p class="eyebrow">03 / CAMERA TRAJECTORY ESTIMATION</p><h2>The improvement,<br><span class="muted">measured across sequences.</span></h2></div>
+  <div class="results-layout"><div class="result-intro"><span class="result-kicker">PAPER COHORT · EuRoC + TUM-VI</span><div class="big-number">64.97<span>%</span></div><h3>lower average trajectory ATE</h3><p>Compared with the frozen visual baseline across 17 sequences, with three repetitions per sequence.</p><a href="assets/paper-cohort.json" download class="text-link">Download measurement summary <span>↗</span></a></div><div class="bars"><div class="bar-heading">Native Sim(3) ATE <span>Metres · lower is better</span></div><div class="bar-row"><div><span><i class="dot blue"></i>LingBot-Map</span><strong>2.08 m</strong></div><div class="bar-track"><div class="bar-fill blue-fill" style="width:100%"></div></div></div><div class="bar-row"><div><span><i class="dot orange"></i>VIStream</span><strong>0.73 m</strong></div><div class="bar-track"><div class="bar-fill orange-fill" style="width:35.0327544%"></div></div></div><p class="bar-footnote">Equal weighting of sequence means after averaging three repetitions. System comparison; this does not isolate the effect of IMU alone. Sim(3) evaluates trajectory shape, rather than absolute metric scale.</p></div></div>
+  <div class="kitti-box"><div><span class="result-kicker">ADDITIONAL VALIDATION · KITTI 00–10</span><h3>A complete run from raw inputs.</h3><p>All 11 sequences and 132 stages completed using the packaged environment. This later offline repair configuration is reported separately from the paper cohort.</p></div><div class="kitti-stat"><span>Loop off</span><strong>15.25<small> m</small></strong></div><div class="kitti-stat"><span>Loop on</span><strong>9.10<small> m</small></strong></div></div>
+  <details class="result-details"><summary>View the full KITTI result table <span>+</span></summary><div class="table-wrap"><table><caption>Fresh run · independent Sim(3) ATE RMSE (m), lower is better</caption><thead><tr><th scope="col">KITTI sequence</th><th scope="col">LingBot-Map</th><th scope="col">VIStream · loop off</th><th scope="col">VIStream · loop on</th></tr></thead><tbody id="kitti-table"></tbody></table></div><p class="protocol">This run produced 15.25 / 9.10 m. It did not exactly reproduce the earlier repaired result of 15.08 / 10.41 m. The configuration includes offline whole-sequence consistency checks; replay is not evidence of online throughput.</p><a href="assets/kitti-results.json" download class="text-link">Download all KITTI scores <span>↓</span></a></details>
+</section>
+
+<section id="reproduce" class="section resources-section"><div class="wrap"><div class="section-heading"><p class="eyebrow">04 / RESOURCES</p><h2>From the paper<br><span class="muted">to a run of your own.</span></h2></div><div class="resource-grid">
+  <a class="resource-card" href="assets/VIStream-paper.pdf" target="_blank" rel="noopener"><span class="resource-icon">01 / READ</span><h3>The paper <span>↗</span></h3><p>Method, controlled experiments, and the reported evaluation protocols.</p><span class="resource-type">PDF DOCUMENT</span></a>
+  <button class="resource-card" data-open-film><span class="resource-icon">02 / WATCH</span><h3>The research film <span>↗</span></h3><p>Recorded camera footage and measured trajectories, in two minutes.</p><span class="resource-type">1080P · FEMALE NARRATION</span></button>
+  <a class="resource-card" href="assets/reproduction-guide.txt" download><span class="resource-icon">03 / REPRODUCE</span><h3>Run instructions <span>↓</span></h3><p>Environment setup, KITTI inputs, fresh inference, and independent evaluation.</p><span class="resource-type">LINUX + NVIDIA GPU</span></a>
+</div><div class="reproduction-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h5"/></svg><p>The complete code, checkpoints, and offline environment are distributed as a separate reproduction package. Datasets are supplied by the user. The web demo replays recorded outputs; the reproduction package generates new trajectories from raw inputs.</p></div></div></section>
+</main>
+<footer class="wrap footer"><a class="brand" href="#">VIStream<span class="title-dot">.</span></a><p>Bringing inertial sensing to streaming geometry.</p><a href="#title">Back to top ↑</a></footer>
+<dialog id="film-dialog" class="film-dialog" aria-label="VIStream research film"><button class="dialog-close" aria-label="Close video">×</button><video id="film" controls playsinline preload="none" poster="assets/poster.jpg"><source src="assets/research-film.mp4" type="video/mp4"><track kind="captions" src="assets/subtitles-en.vtt" srclang="en" label="English"></video><p>Real sensor recordings and measured experiment replay. Playback is not a live-inference claim. <a href="assets/research-film.mp4" download="VIStream-film.mp4">Download video · 18.79 MB ↓</a></p></dialog>
+<dialog id="pipeline-dialog" class="pipeline-dialog" aria-label="VIStream pipeline enlarged"><button class="dialog-close" aria-label="Close pipeline">×</button><img src="assets/pipeline.png" alt="Full VIStream pipeline diagram"></dialog>
+</body></html>
