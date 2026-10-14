@@ -1,0 +1,17 @@
+Pillow
+huggingface_hub
+einops
+safetensors
+opencv-python
+tqdm
+scipy
+
+[demo]
+lingbot-map[vis]
+
+[vis]
+viser>=0.2.23
+trimesh
+matplotlib
+onnxruntime
+requests

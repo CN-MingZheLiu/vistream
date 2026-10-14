@@ -1,0 +1,8 @@
+{
+  "smoothing_frames": 8.0,
+  "minimum_scale": 0.8,
+  "maximum_scale": 1.25,
+  "minimum_valid_fraction": 0.8,
+  "maximum_relative_mad": 0.15,
+  "maximum_path_change_ratio": 0.2
+}

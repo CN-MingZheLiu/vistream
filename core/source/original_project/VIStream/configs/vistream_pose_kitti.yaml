@@ -1,0 +1,99 @@
+model:
+  lingbot_source: vendor
+  lingbot_checkpoint: weights/lingbot-map-long.pt
+  airimu_checkpoint: weights/airimu-kitti-best_model.ckpt
+  lingbot_commit: 4cd986009b9adeded8a4e740919221940dedeffe
+  image_size: 518
+  patch_size: 14
+  warmup_frames: 8
+  sliding_window_size: -1
+  use_sdpa: true
+  enable_depth: false
+  enable_points: false
+  enable_local_points: false
+  fusion_mode: pose
+  imu_architecture: causal_gru
+  adapter:
+    token_dim: 2048
+    motion_dim: 256
+    raw_feature_dim: 192
+    low_rank_dim: 128
+    num_heads: 8
+    history_frames: 8
+    stats_dim: 10
+    dropout: 0.0
+    stage: rotation
+    translation_gain_max: 0.2
+    safe_gate_init_logit: -4.0
+    pose_hidden_dim: 128
+    pose_scale_log_max: 2.5
+    pose_translation_add_max: 1.0
+    pose_rotation_max: 0.25
+    pose_gate_init_logit: -5.0
+
+data:
+  dataset: kitti
+  # KITTI 05 is held out completely for the final metric.
+  train_sequences: ["00", "01", "02", "06", "08", "09", "10"]
+  validation_sequences: ["04", "07"]
+  window_frames: 32
+  stride_frames: 16
+  # Capacity only: loaders fail rather than decimate if an interval exceeds it.
+  max_imu_samples: 64
+  prefer_high_rate_imu: true
+  acc_source: acc
+  num_workers: 4
+  # SI units: m/s^2 for accelerometer and rad/s for gyroscope. These ranges
+  # cover calibration variation without teaching the model a dataset ID.
+  imu_augmentation:
+    enabled: true
+    acc_noise_std: 0.08
+    gyro_noise_std: 0.004
+    acc_bias_std: 0.15
+    gyro_bias_std: 0.006
+    acc_bias_walk_std: 0.01
+    gyro_bias_walk_std: 0.0005
+    scale_std: 0.01
+    axis_misalignment_std_deg: 0.25
+
+train:
+  seed: 2026
+  epochs: 20
+  batch_size_per_gpu: 1
+  gradient_accumulation: 4
+  learning_rate: 0.00005
+  weight_decay: 0.01
+  grad_clip_norm: 1.0
+  validate_every: 1
+  validation_max_batches: 0
+  save_every_steps: 500
+  output_dir: outputs/kitti_pose_fusion
+  bf16: false
+  stage: rotation
+
+loss:
+  relative_translation: 1.0
+  relative_rotation: 0.7
+  anchored_absolute: 0.5
+  velocity: 0.2
+  long_drift: 0.6
+  imu_consistency: 0.05
+  depth: 0.0
+  depth_gradient: 0.0
+  world_points: 0.0
+  residual_regularizer: 0.001
+  oracle_gate: 0.2
+  safe_hinge: 0.5
+
+evaluation:
+  alignment: [se3, sim3]
+  max_depth_m: 80.0
+  voxel_size_m: 0.05
+  f1_thresholds_m: [0.05, 0.10]
+  kitti_odometry_root: /data2/huangshuaixin/LingBot-Map-relocalization/kitti_odometry/dataset
+  kitti_raw_root: /data2/huangshuaixin/kitti_raw
+  kitti_sequences: ["05"]
+  euroc_root: /data1/mingzheliu/datasets/EuRoc_flat
+  euroc_sequences: []
+  kaist_converted_root: /home/mingzheliu/MZL_workplace/IMU-lingbot-1.2/data/KAIST_VIO_euroc
+  kaist_camera_yaml: /data1/mingzheliu/datasets/KAIST_VIO/kaistviodataset/config/cam-imu.yaml

@@ -1,0 +1,20 @@
+{
+  "image_scale": 0.5,
+  "sift_nfeatures": 4000,
+  "sift_contrast_threshold": 0.01,
+  "ratio_test": 0.72,
+  "minimum_matches": 40,
+  "minimum_inliers": 30,
+  "inlier_count_width": 20.0,
+  "minimum_inlier_ratio": 0.60,
+  "inlier_ratio_width": 0.05,
+  "maximum_rotation_innovation_rad": 0.05235987755982989,
+  "rotation_innovation_width_rad": 0.017453292519943295,
+  "minimum_forward_ratio": 0.60,
+  "forward_ratio_width": 0.10,
+  "route_threshold": 0.50,
+  "maximum_direction_blend": 1.0,
+  "maximum_path_change_ratio": 0.50,
+  "ransac_probability": 0.999,
+  "ransac_threshold_px": 1.5
+}

@@ -1,0 +1,14 @@
+{
+  "buffer_margin": 32,
+  "beta": 0.3,
+  "filter_thresh": 2.4,
+  "warmup": 8,
+  "keyframe_thresh": 4.0,
+  "frontend_thresh": 16.0,
+  "frontend_window": 25,
+  "frontend_radius": 2,
+  "frontend_nms": 1,
+  "backend_thresh": 22.0,
+  "backend_radius": 2,
+  "backend_nms": 3
+}

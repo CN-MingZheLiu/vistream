@@ -1,0 +1,19 @@
+{
+  "maximum_open_road_loop_probability": 0.10,
+  "loop_probability_width": 0.10,
+  "minimum_forward_ratio": 0.85,
+  "forward_ratio_width": 0.05,
+  "minimum_forward_sign_consistency": 0.95,
+  "forward_sign_width": 0.025,
+  "minimum_open_road_frames": 128,
+  "frame_count_width": 64.0,
+  "maximum_imu_rotation_innovation_median_rad": 0.03490658503988659,
+  "imu_rotation_innovation_median_width_rad": 0.017453292519943295,
+  "maximum_imu_rotation_innovation_p90_rad": 0.08726646259971647,
+  "imu_rotation_innovation_p90_width_rad": 0.03490658503988659,
+  "speed_cv_smoothing_center": 0.10,
+  "speed_cv_smoothing_width": 0.05,
+  "speed_smoothing_window": 9,
+  "route_threshold": 0.50,
+  "maximum_path_change_ratio": 0.50
+}

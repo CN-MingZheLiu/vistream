@@ -1,0 +1,941 @@
+{
+  "scope": "Omitted runtime/checkpoint assets required by the unchanged strict full-bundle runner. These SHA256 values identify the archived binaries; a fresh source build need not be byte-identical and requires its own runtime attestation.",
+  "assets": [
+    {
+      "expectedPath": "deps/torch/hub/checkpoints/resnet50-11ad3fa6.pth",
+      "bytes": 102540417,
+      "sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+      "included": false
+    },
+    {
+      "expectedPath": "deps/weights/dpvo.pth",
+      "bytes": 14167743,
+      "sha256": "30d02dc2b88a321cf99aad8e4ea1152a44d791b5b65bf95ad036922819c0ff12",
+      "included": false
+    },
+    {
+      "expectedPath": "deps/weights/droid.mirror.pth",
+      "bytes": 16061701,
+      "sha256": "46476ef64cde45a97504910d6f3de2eef7b398ec1c6e4e668815c29076024526",
+      "included": false
+    },
+    {
+      "expectedPath": "deps/weights/droid.pth",
+      "bytes": 16061701,
+      "sha256": "46476ef64cde45a97504910d6f3de2eef7b398ec1c6e4e668815c29076024526",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/ORB_SLAM3/Examples/Monocular/mono_kitti",
+      "bytes": 53648,
+      "sha256": "1f66b7ec8fae8905ccb80d065f9b177ffffda17357b46de31dbb0382170845d2",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/ORB_SLAM3/Thirdparty/DBoW2/lib/libDBoW2.so",
+      "bytes": 79800,
+      "sha256": "3ac89669dd7faf24ad449889ab74c16c7a922d4a83dfd7750022244033ba7887",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/ORB_SLAM3/Thirdparty/g2o/lib/libg2o.so",
+      "bytes": 785216,
+      "sha256": "e143729802e052298ac6cdd03ad3b70b3b7990595111d8262fd627cc5b4ca1a5",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/ORB_SLAM3/Vocabulary/ORBvoc.txt",
+      "bytes": 145250924,
+      "sha256": "f8dd027f7a6cb88129821341194d7f2c75b77b3394257ddd0d2229863d1a3570",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/ORB_SLAM3/lib/libORB_SLAM3.so",
+      "bytes": 5102032,
+      "sha256": "b7b9bb60ea7e42783d880b2d3a2e9c5dff9f732befe07fb75a1b993289a3aba9",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_calib3d.so",
+      "bytes": 2721048,
+      "sha256": "b2513879e32dc267554e98f9def82f09eae174ba27273a5a1ff62df0a1e52347",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_calib3d.so.4.5.5",
+      "bytes": 2721048,
+      "sha256": "b2513879e32dc267554e98f9def82f09eae174ba27273a5a1ff62df0a1e52347",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_calib3d.so.405",
+      "bytes": 2721048,
+      "sha256": "b2513879e32dc267554e98f9def82f09eae174ba27273a5a1ff62df0a1e52347",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_core.so",
+      "bytes": 4742856,
+      "sha256": "8b3a5af1439a9013c3365dca6be76450e8947cb2f97da1113571156b1ef5d1e7",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_core.so.4.5.5",
+      "bytes": 4742856,
+      "sha256": "8b3a5af1439a9013c3365dca6be76450e8947cb2f97da1113571156b1ef5d1e7",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_core.so.405",
+      "bytes": 4742856,
+      "sha256": "8b3a5af1439a9013c3365dca6be76450e8947cb2f97da1113571156b1ef5d1e7",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_features2d.so",
+      "bytes": 940632,
+      "sha256": "8d78016e539a3bf3b5e82c55992091f3de492dead46b67b87362043e684274df",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_features2d.so.4.5.5",
+      "bytes": 940632,
+      "sha256": "8d78016e539a3bf3b5e82c55992091f3de492dead46b67b87362043e684274df",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_features2d.so.405",
+      "bytes": 940632,
+      "sha256": "8d78016e539a3bf3b5e82c55992091f3de492dead46b67b87362043e684274df",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_flann.so",
+      "bytes": 720216,
+      "sha256": "bc78d55100b4b2f2e640201110fb199685fce5017938af6355810709929f651f",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_flann.so.4.5.5",
+      "bytes": 720216,
+      "sha256": "bc78d55100b4b2f2e640201110fb199685fce5017938af6355810709929f651f",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_flann.so.405",
+      "bytes": 720216,
+      "sha256": "bc78d55100b4b2f2e640201110fb199685fce5017938af6355810709929f651f",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_highgui.so",
+      "bytes": 264792,
+      "sha256": "3ad8f964b52edb75aae3385b421f1a99828307c0e5ecf5bb6396e7ae8f567d40",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_highgui.so.4.5.5",
+      "bytes": 264792,
+      "sha256": "3ad8f964b52edb75aae3385b421f1a99828307c0e5ecf5bb6396e7ae8f567d40",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_highgui.so.405",
+      "bytes": 264792,
+      "sha256": "3ad8f964b52edb75aae3385b421f1a99828307c0e5ecf5bb6396e7ae8f567d40",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_imgcodecs.so",
+      "bytes": 781976,
+      "sha256": "29b1b49b06a7940fa072e2d1d6e6f57090ac84370f82887af4ef13ee4aa8b9f3",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_imgcodecs.so.4.5.5",
+      "bytes": 781976,
+      "sha256": "29b1b49b06a7940fa072e2d1d6e6f57090ac84370f82887af4ef13ee4aa8b9f3",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_imgcodecs.so.405",
+      "bytes": 781976,
+      "sha256": "29b1b49b06a7940fa072e2d1d6e6f57090ac84370f82887af4ef13ee4aa8b9f3",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_imgproc.so",
+      "bytes": 7262320,
+      "sha256": "a43d370edd3786574f2a378017435ec2ef6a414edbd2b5255fe4110a82682cc6",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_imgproc.so.4.5.5",
+      "bytes": 7262320,
+      "sha256": "a43d370edd3786574f2a378017435ec2ef6a414edbd2b5255fe4110a82682cc6",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_imgproc.so.405",
+      "bytes": 7262320,
+      "sha256": "a43d370edd3786574f2a378017435ec2ef6a414edbd2b5255fe4110a82682cc6",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_video.so",
+      "bytes": 496640,
+      "sha256": "0869c083a52a79664a6efc990d9a88fb02c40c9941bb23071bc3c64f80daf538",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_video.so.4.5.5",
+      "bytes": 496640,
+      "sha256": "0869c083a52a79664a6efc990d9a88fb02c40c9941bb23071bc3c64f80daf538",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/OpenCV-4.5.5/install/lib/libopencv_video.so.405",
+      "bytes": 496640,
+      "sha256": "0869c083a52a79664a6efc990d9a88fb02c40c9941bb23071bc3c64f80daf538",
+      "included": false
+    },
+    {
+      "expectedPath": "native_stage/prebuilt/Pangolin/install/lib/libpangolin.so",
+      "bytes": 2836480,
+      "sha256": "bf561bc0fc475df5190157ff5de42b84ff0631a5f80d669982abaaca4cbb4779",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/environment/lingbot-map-linux-x86_64.tar.gz",
+      "bytes": 6539666131,
+      "sha256": "74c191df8afaee52aa4f17e3932002a3b7325c9ee482abf3d16f490b55c6cfcd",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libDBoW2.so",
+      "bytes": 79800,
+      "sha256": "3ac89669dd7faf24ad449889ab74c16c7a922d4a83dfd7750022244033ba7887",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libEGL.so.1",
+      "bytes": 72352,
+      "sha256": "69816a7062d7d624144472f5ef71f5b23732b9003df7472662920602e62805db",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libEGL.so.1.1.0",
+      "bytes": 72352,
+      "sha256": "69816a7062d7d624144472f5ef71f5b23732b9003df7472662920602e62805db",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libGL.so.1",
+      "bytes": 543056,
+      "sha256": "92e6ea9f8caa3c265f3ef141a122a18f7d2e27d6e5fd2b490cfea83262df745e",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libGL.so.1.7.0",
+      "bytes": 543056,
+      "sha256": "92e6ea9f8caa3c265f3ef141a122a18f7d2e27d6e5fd2b490cfea83262df745e",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libGLEW.so.2.2",
+      "bytes": 747560,
+      "sha256": "1ca90beb9fb8d036e4217574b18e2482e342ccf628038c1fccb6417db270eac7",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libGLEW.so.2.2.0",
+      "bytes": 747560,
+      "sha256": "1ca90beb9fb8d036e4217574b18e2482e342ccf628038c1fccb6417db270eac7",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libGLX.so.0",
+      "bytes": 141896,
+      "sha256": "19ad2625b20a3afe6f5e55f9acd1e18e0dfc81b0965d7d3f2181a05b6d48edbf",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libGLX.so.0.0.0",
+      "bytes": 141896,
+      "sha256": "19ad2625b20a3afe6f5e55f9acd1e18e0dfc81b0965d7d3f2181a05b6d48edbf",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libGLdispatch.so.0",
+      "bytes": 715200,
+      "sha256": "a4f2642498fba54d2f39e90ca3daa94340cdd52198473185a5285608ae318cb6",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libGLdispatch.so.0.0.0",
+      "bytes": 715200,
+      "sha256": "a4f2642498fba54d2f39e90ca3daa94340cdd52198473185a5285608ae318cb6",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libOpenGL.so.0",
+      "bytes": 174408,
+      "sha256": "35ea98e979c5bcadf06a79b8ca5a767a197c77bc77428a9a8a16b95bf78e99e9",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libOpenGL.so.0.0.0",
+      "bytes": 174408,
+      "sha256": "35ea98e979c5bcadf06a79b8ca5a767a197c77bc77428a9a8a16b95bf78e99e9",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libOpenNI.so.0",
+      "bytes": 439016,
+      "sha256": "2c59917cd62d266a0f1e57ddd88d17c4527ae52d0c69257a4dd84a4939133682",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libOpenNI2.so.0",
+      "bytes": 236896,
+      "sha256": "0fea72b155845a9bd0d035af7d0d176bec073f4ac9fa3572436a178c0dda75c1",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libX11.so.6",
+      "bytes": 1306280,
+      "sha256": "34b7869a1ba702462a1aa862fc0afe5b2608a7d5a09552c07796802fcf0c684b",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libX11.so.6.4.0",
+      "bytes": 1306280,
+      "sha256": "34b7869a1ba702462a1aa862fc0afe5b2608a7d5a09552c07796802fcf0c684b",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libXau.so.6",
+      "bytes": 18720,
+      "sha256": "98343a8324ea62ed75a13c923ed5dea96b7a8ad41aeba9f18126c4cbf7178064",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libXau.so.6.0.0",
+      "bytes": 18720,
+      "sha256": "98343a8324ea62ed75a13c923ed5dea96b7a8ad41aeba9f18126c4cbf7178064",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libXdmcp.so.6",
+      "bytes": 26800,
+      "sha256": "1dc3ff1269a5ede69ef9a8ec2436d73fccbcd10531055b359292e0bde4e29b46",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libXdmcp.so.6.0.0",
+      "bytes": 26800,
+      "sha256": "1dc3ff1269a5ede69ef9a8ec2436d73fccbcd10531055b359292e0bde4e29b46",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libboost_serialization.so.1.74.0",
+      "bytes": 264536,
+      "sha256": "fc22380106a12299c1ffb7d13e1bec2db0e2bf265cf41d9b2fdde35bdae4403c",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libbsd.so.0",
+      "bytes": 89096,
+      "sha256": "e4ad21c203d8e8b9b7f49071311339af6b438026e1ad236403e3b379b022f23d",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libbsd.so.0.11.5",
+      "bytes": 89096,
+      "sha256": "e4ad21c203d8e8b9b7f49071311339af6b438026e1ad236403e3b379b022f23d",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libcrypto.so.3",
+      "bytes": 4455728,
+      "sha256": "ef58def3bb20b203d413fd8e44bb9a4ce300573cf99ed43a12eddfac9e8cc17c",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libdeflate.so.0",
+      "bytes": 141344,
+      "sha256": "dce39e00c986632f7d83199f2e5f2b89d7e11c8f311c6e9f204595f899785fa6",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libg2o.so",
+      "bytes": 785216,
+      "sha256": "e143729802e052298ac6cdd03ad3b70b3b7990595111d8262fd627cc5b4ca1a5",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libjbig.so.0",
+      "bytes": 66568,
+      "sha256": "32ed19ff3065742c392e018840ed59a0b2a17817adf94ba409708f16d8cf234b",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libjpeg.so.8",
+      "bytes": 522960,
+      "sha256": "2cfbcf67051b3efd1bf634af7d0b65a47dda98ff61ba793a87415ed554731344",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libjpeg.so.8.2.2",
+      "bytes": 522960,
+      "sha256": "2cfbcf67051b3efd1bf634af7d0b65a47dda98ff61ba793a87415ed554731344",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/liblz4.so.1",
+      "bytes": 125152,
+      "sha256": "65f47a3dc2cec5f938379b7b625f0621657bf1254551895d22462c6a204cbad8",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/liblz4.so.1.9.3",
+      "bytes": 125152,
+      "sha256": "65f47a3dc2cec5f938379b7b625f0621657bf1254551895d22462c6a204cbad8",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/liblzma.so.5",
+      "bytes": 170456,
+      "sha256": "7fa51c1500cb9fcc4c7d69b7fe0a6d7203cfe6af64373f6c411c5445ef1b402c",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/liblzma.so.5.2.5",
+      "bytes": 170456,
+      "sha256": "7fa51c1500cb9fcc4c7d69b7fe0a6d7203cfe6af64373f6c411c5445ef1b402c",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libmd.so.0",
+      "bytes": 47472,
+      "sha256": "bb376813876bb214535bbbdac70f2c0c4b00baecb81557dab78a79518248df06",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libmd.so.0.0.5",
+      "bytes": 47472,
+      "sha256": "bb376813876bb214535bbbdac70f2c0c4b00baecb81557dab78a79518248df06",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_calib3d.so.4.5.5",
+      "bytes": 2721048,
+      "sha256": "b2513879e32dc267554e98f9def82f09eae174ba27273a5a1ff62df0a1e52347",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_calib3d.so.405",
+      "bytes": 2721048,
+      "sha256": "b2513879e32dc267554e98f9def82f09eae174ba27273a5a1ff62df0a1e52347",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_core.so.4.5.5",
+      "bytes": 4742856,
+      "sha256": "8b3a5af1439a9013c3365dca6be76450e8947cb2f97da1113571156b1ef5d1e7",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_core.so.405",
+      "bytes": 4742856,
+      "sha256": "8b3a5af1439a9013c3365dca6be76450e8947cb2f97da1113571156b1ef5d1e7",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_features2d.so.4.5.5",
+      "bytes": 940632,
+      "sha256": "8d78016e539a3bf3b5e82c55992091f3de492dead46b67b87362043e684274df",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_features2d.so.405",
+      "bytes": 940632,
+      "sha256": "8d78016e539a3bf3b5e82c55992091f3de492dead46b67b87362043e684274df",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_flann.so.4.5.5",
+      "bytes": 720216,
+      "sha256": "bc78d55100b4b2f2e640201110fb199685fce5017938af6355810709929f651f",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_flann.so.405",
+      "bytes": 720216,
+      "sha256": "bc78d55100b4b2f2e640201110fb199685fce5017938af6355810709929f651f",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_highgui.so.4.5.5",
+      "bytes": 264792,
+      "sha256": "3ad8f964b52edb75aae3385b421f1a99828307c0e5ecf5bb6396e7ae8f567d40",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_highgui.so.405",
+      "bytes": 264792,
+      "sha256": "3ad8f964b52edb75aae3385b421f1a99828307c0e5ecf5bb6396e7ae8f567d40",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_imgcodecs.so.4.5.5",
+      "bytes": 781976,
+      "sha256": "29b1b49b06a7940fa072e2d1d6e6f57090ac84370f82887af4ef13ee4aa8b9f3",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_imgcodecs.so.405",
+      "bytes": 781976,
+      "sha256": "29b1b49b06a7940fa072e2d1d6e6f57090ac84370f82887af4ef13ee4aa8b9f3",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_imgproc.so.4.5.5",
+      "bytes": 7262320,
+      "sha256": "a43d370edd3786574f2a378017435ec2ef6a414edbd2b5255fe4110a82682cc6",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libopencv_imgproc.so.405",
+      "bytes": 7262320,
+      "sha256": "a43d370edd3786574f2a378017435ec2ef6a414edbd2b5255fe4110a82682cc6",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libpangolin.so",
+      "bytes": 2836480,
+      "sha256": "bf561bc0fc475df5190157ff5de42b84ff0631a5f80d669982abaaca4cbb4779",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libpng16.so.16",
+      "bytes": 235592,
+      "sha256": "e76f2ddc6ce8d72c75374ffcfe3524e70e558a652de3014ffccdc7edb9730507",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libpng16.so.16.37.0",
+      "bytes": 235592,
+      "sha256": "e76f2ddc6ce8d72c75374ffcfe3524e70e558a652de3014ffccdc7edb9730507",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libtiff.so.5",
+      "bytes": 555176,
+      "sha256": "005ba73d8ce3ebec60a985df14d00fc7d57719f3000f142ef80efb2c7011bb1d",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libtiff.so.5.7.0",
+      "bytes": 555176,
+      "sha256": "005ba73d8ce3ebec60a985df14d00fc7d57719f3000f142ef80efb2c7011bb1d",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libtinyxml.so.2.6.2",
+      "bytes": 88952,
+      "sha256": "c353cc0c25904f630d9b0dfcf4a98dc76c29f0b722a9ee84a401d01c9e6f78fc",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libudev.so.1",
+      "bytes": 166240,
+      "sha256": "801bed8d1004e7ddfb34bf563d89f598bfc0497fa62582b730dc9a0c26490daa",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libudev.so.1.7.2",
+      "bytes": 166240,
+      "sha256": "801bed8d1004e7ddfb34bf563d89f598bfc0497fa62582b730dc9a0c26490daa",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libusb-1.0.so.0",
+      "bytes": 117736,
+      "sha256": "919e7ca7633bde351a097843638d1871c497211626e6c355140e898e61d2a84c",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libusb-1.0.so.0.3.0",
+      "bytes": 117736,
+      "sha256": "919e7ca7633bde351a097843638d1871c497211626e6c355140e898e61d2a84c",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libwebp.so.7",
+      "bytes": 432688,
+      "sha256": "2cff2529eb932c3b81ef6a344b99a5412c893d3f672a7d28f986a8d08c8b2ccb",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libwebp.so.7.1.3",
+      "bytes": 432688,
+      "sha256": "2cff2529eb932c3b81ef6a344b99a5412c893d3f672a7d28f986a8d08c8b2ccb",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libxcb.so.1",
+      "bytes": 166504,
+      "sha256": "aabc489094abd96c876d1c989a2da8a8aa6d28f5a676c4a84dd6d0a0c34aec5d",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libxcb.so.1.1.0",
+      "bytes": 166504,
+      "sha256": "aabc489094abd96c876d1c989a2da8a8aa6d28f5a676c4a84dd6d0a0c34aec5d",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libz.so.1",
+      "bytes": 108936,
+      "sha256": "64c206f0146cc58bbddc4f22054436f4ff278f5a554aa3ce6921ddf7e9133370",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libz.so.1.2.11",
+      "bytes": 108936,
+      "sha256": "64c206f0146cc58bbddc4f22054436f4ff278f5a554aa3ce6921ddf7e9133370",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libzstd.so.1",
+      "bytes": 841808,
+      "sha256": "5df4f4df42d76270bb6981fabc7c1fdccd8ad28a23d84d67f73203fb3f537667",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb-portable/libzstd.so.1.4.8",
+      "bytes": 841808,
+      "sha256": "5df4f4df42d76270bb6981fabc7c1fdccd8ad28a23d84d67f73203fb3f537667",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libDBoW2.so",
+      "bytes": 79800,
+      "sha256": "3ac89669dd7faf24ad449889ab74c16c7a922d4a83dfd7750022244033ba7887",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libEGL.so.1.1.0",
+      "bytes": 72352,
+      "sha256": "69816a7062d7d624144472f5ef71f5b23732b9003df7472662920602e62805db",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libGL.so.1.7.0",
+      "bytes": 543056,
+      "sha256": "92e6ea9f8caa3c265f3ef141a122a18f7d2e27d6e5fd2b490cfea83262df745e",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libGLEW.so.2.2.0",
+      "bytes": 747560,
+      "sha256": "1ca90beb9fb8d036e4217574b18e2482e342ccf628038c1fccb6417db270eac7",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libGLX.so.0.0.0",
+      "bytes": 141896,
+      "sha256": "19ad2625b20a3afe6f5e55f9acd1e18e0dfc81b0965d7d3f2181a05b6d48edbf",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libGLdispatch.so.0.0.0",
+      "bytes": 715200,
+      "sha256": "a4f2642498fba54d2f39e90ca3daa94340cdd52198473185a5285608ae318cb6",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libOpenGL.so.0.0.0",
+      "bytes": 174408,
+      "sha256": "35ea98e979c5bcadf06a79b8ca5a767a197c77bc77428a9a8a16b95bf78e99e9",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libOpenNI.so.0",
+      "bytes": 439016,
+      "sha256": "2c59917cd62d266a0f1e57ddd88d17c4527ae52d0c69257a4dd84a4939133682",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libOpenNI2.so.0",
+      "bytes": 236896,
+      "sha256": "0fea72b155845a9bd0d035af7d0d176bec073f4ac9fa3572436a178c0dda75c1",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libX11.so.6.4.0",
+      "bytes": 1306280,
+      "sha256": "34b7869a1ba702462a1aa862fc0afe5b2608a7d5a09552c07796802fcf0c684b",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libXau.so.6.0.0",
+      "bytes": 18720,
+      "sha256": "98343a8324ea62ed75a13c923ed5dea96b7a8ad41aeba9f18126c4cbf7178064",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libXdmcp.so.6.0.0",
+      "bytes": 26800,
+      "sha256": "1dc3ff1269a5ede69ef9a8ec2436d73fccbcd10531055b359292e0bde4e29b46",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libboost_serialization.so.1.74.0",
+      "bytes": 264536,
+      "sha256": "fc22380106a12299c1ffb7d13e1bec2db0e2bf265cf41d9b2fdde35bdae4403c",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libbsd.so.0.11.5",
+      "bytes": 89096,
+      "sha256": "e4ad21c203d8e8b9b7f49071311339af6b438026e1ad236403e3b379b022f23d",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libc.so.6",
+      "bytes": 2220400,
+      "sha256": "c53819710b163d3f1d2541778590d58d3ef31cb0ed75adcbe059faac68c1e72d",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libcrypto.so.3",
+      "bytes": 4455728,
+      "sha256": "ef58def3bb20b203d413fd8e44bb9a4ce300573cf99ed43a12eddfac9e8cc17c",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libdeflate.so.0",
+      "bytes": 141344,
+      "sha256": "dce39e00c986632f7d83199f2e5f2b89d7e11c8f311c6e9f204595f899785fa6",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libdl.so.2",
+      "bytes": 14432,
+      "sha256": "bf1783273aa79484bf5f70eddc013bc3982785d8aadef224aa09beb08fa95b42",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libg2o.so",
+      "bytes": 785216,
+      "sha256": "e143729802e052298ac6cdd03ad3b70b3b7990595111d8262fd627cc5b4ca1a5",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libgcc_s.so.1",
+      "bytes": 125488,
+      "sha256": "a93ec41b336a895a7f0d7b789d66f6fc816de1a5ad0da37e8cfc428d7e9f8dd4",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libjbig.so.0",
+      "bytes": 66568,
+      "sha256": "32ed19ff3065742c392e018840ed59a0b2a17817adf94ba409708f16d8cf234b",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libjpeg.so.8.2.2",
+      "bytes": 522960,
+      "sha256": "2cfbcf67051b3efd1bf634af7d0b65a47dda98ff61ba793a87415ed554731344",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/liblz4.so.1.9.3",
+      "bytes": 125152,
+      "sha256": "65f47a3dc2cec5f938379b7b625f0621657bf1254551895d22462c6a204cbad8",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/liblzma.so.5.2.5",
+      "bytes": 170456,
+      "sha256": "7fa51c1500cb9fcc4c7d69b7fe0a6d7203cfe6af64373f6c411c5445ef1b402c",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libm.so.6",
+      "bytes": 940560,
+      "sha256": "00830df310aac5023e10bd7b715149ab8ddc682277fd8ae3539a7a44fcdd6c38",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libmd.so.0.0.5",
+      "bytes": 47472,
+      "sha256": "bb376813876bb214535bbbdac70f2c0c4b00baecb81557dab78a79518248df06",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libopencv_calib3d.so.4.5.5",
+      "bytes": 2721048,
+      "sha256": "b2513879e32dc267554e98f9def82f09eae174ba27273a5a1ff62df0a1e52347",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libopencv_core.so.4.5.5",
+      "bytes": 4742856,
+      "sha256": "8b3a5af1439a9013c3365dca6be76450e8947cb2f97da1113571156b1ef5d1e7",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libopencv_features2d.so.4.5.5",
+      "bytes": 940632,
+      "sha256": "8d78016e539a3bf3b5e82c55992091f3de492dead46b67b87362043e684274df",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libopencv_flann.so.4.5.5",
+      "bytes": 720216,
+      "sha256": "bc78d55100b4b2f2e640201110fb199685fce5017938af6355810709929f651f",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libopencv_highgui.so.4.5.5",
+      "bytes": 264792,
+      "sha256": "3ad8f964b52edb75aae3385b421f1a99828307c0e5ecf5bb6396e7ae8f567d40",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libopencv_imgcodecs.so.4.5.5",
+      "bytes": 781976,
+      "sha256": "29b1b49b06a7940fa072e2d1d6e6f57090ac84370f82887af4ef13ee4aa8b9f3",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libopencv_imgproc.so.4.5.5",
+      "bytes": 7262320,
+      "sha256": "a43d370edd3786574f2a378017435ec2ef6a414edbd2b5255fe4110a82682cc6",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libpangolin.so",
+      "bytes": 2836480,
+      "sha256": "bf561bc0fc475df5190157ff5de42b84ff0631a5f80d669982abaaca4cbb4779",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libpng16.so.16.37.0",
+      "bytes": 235592,
+      "sha256": "e76f2ddc6ce8d72c75374ffcfe3524e70e558a652de3014ffccdc7edb9730507",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libpthread.so.0",
+      "bytes": 21448,
+      "sha256": "16e807d47ff2441f0203fb2b8805d471e555d932d3d8d262ec6a58ea1d640fd8",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libstdc++.so.6.0.30",
+      "bytes": 2260296,
+      "sha256": "2fb167641d95f9701f9e5aea01f0caec9a539d257212116aef650c2d7fd6e041",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libtiff.so.5.7.0",
+      "bytes": 555176,
+      "sha256": "005ba73d8ce3ebec60a985df14d00fc7d57719f3000f142ef80efb2c7011bb1d",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libtinyxml.so.2.6.2",
+      "bytes": 88952,
+      "sha256": "c353cc0c25904f630d9b0dfcf4a98dc76c29f0b722a9ee84a401d01c9e6f78fc",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libudev.so.1.7.2",
+      "bytes": 166240,
+      "sha256": "801bed8d1004e7ddfb34bf563d89f598bfc0497fa62582b730dc9a0c26490daa",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libusb-1.0.so.0.3.0",
+      "bytes": 117736,
+      "sha256": "919e7ca7633bde351a097843638d1871c497211626e6c355140e898e61d2a84c",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libwebp.so.7.1.3",
+      "bytes": 432688,
+      "sha256": "2cff2529eb932c3b81ef6a344b99a5412c893d3f672a7d28f986a8d08c8b2ccb",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libxcb.so.1.1.0",
+      "bytes": 166504,
+      "sha256": "aabc489094abd96c876d1c989a2da8a8aa6d28f5a676c4a84dd6d0a0c34aec5d",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libz.so.1.2.11",
+      "bytes": 108936,
+      "sha256": "64c206f0146cc58bbddc4f22054436f4ff278f5a554aa3ce6921ddf7e9133370",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/lib/orb/libzstd.so.1.4.8",
+      "bytes": 841808,
+      "sha256": "5df4f4df42d76270bb6981fabc7c1fdccd8ad28a23d84d67f73203fb3f537667",
+      "included": false
+    },
+    {
+      "expectedPath": "runtime/weights/lingbot-map-long.pt",
+      "bytes": 4632303465,
+      "sha256": "832bc82cbae0bc9bbe946ef5ee1f7226abd8c0e183ccf8beddbb3d133576f409",
+      "included": false
+    },
+    {
+      "expectedPath": "tools/bwrap",
+      "bytes": 72160,
+      "sha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+      "included": false
+    },
+    {
+      "expectedPath": "tools/lib/libcap.so.2",
+      "bytes": 39024,
+      "sha256": "a87681f705c09fc97f23db4dccc0c9a0fd34cf73698251361d8c6ccbf26efe75",
+      "included": false
+    },
+    {
+      "expectedPath": "tools/lib/libctf-nobfd.so.0",
+      "bytes": 228376,
+      "sha256": "d46fc30938410e5fe6861c608f57b5fb60bb34d1f8af9e5b0bbbb0ecbb806792",
+      "included": false
+    },
+    {
+      "expectedPath": "tools/lib/libpcre2-8.so.0",
+      "bytes": 613064,
+      "sha256": "f887eed7d0df7073f3d8bdc9e60d35082453b10165cf45359b5019e33ba2b9ec",
+      "included": false
+    },
+    {
+      "expectedPath": "tools/lib/libselinux.so.1",
+      "bytes": 166280,
+      "sha256": "624eb1e6a7510e0983e9caa1bbf3e1966acb64fd6d3ad4db94528addbe1e7224",
+      "included": false
+    },
+    {
+      "expectedPath": "tools/lib/libz.so.1",
+      "bytes": 108936,
+      "sha256": "64c206f0146cc58bbddc4f22054436f4ff278f5a554aa3ce6921ddf7e9133370",
+      "included": false
+    },
+    {
+      "expectedPath": "tools/readelf",
+      "bytes": 776640,
+      "sha256": "04db0000749aff89e4af21429340b00b536fc6f80e811c872c006507881a5560",
+      "included": false
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "forward_center": 0.8,
+  "forward_width": 0.05,
+  "planar_center": 0.98,
+  "planar_width": 0.01,
+  "imu_route_threshold": 0.5,
+  "forward_sign_threshold": 0.9,
+  "maximum_path_change_ratio": 0.5
+}

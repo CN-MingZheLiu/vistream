@@ -1,0 +1,11 @@
+{
+  "maximum_loop_probability": 0.10,
+  "loop_probability_width": 0.10,
+  "maximum_endpoint_path_log_ratio_disagreement": 0.30,
+  "endpoint_path_log_ratio_width": 0.15,
+  "minimum_turn_rank_correlation": 0.75,
+  "turn_rank_correlation_width": 0.05,
+  "minimum_keyframe_fraction": 0.80,
+  "keyframe_fraction_width": 0.05,
+  "route_threshold": 0.50
+}

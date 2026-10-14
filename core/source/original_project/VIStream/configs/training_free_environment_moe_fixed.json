@@ -1,0 +1,5 @@
+{
+  "visual_abstention_score": 0.5,
+  "route_threshold": 0.5,
+  "softmax_temperature": 0.1
+}

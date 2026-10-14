@@ -1,0 +1,9 @@
+{
+  "minimum_tracking_completeness": 0.7,
+  "advisory_tracking_completeness": 0.85,
+  "trusted_tracking_completeness": 0.95,
+  "maximum_trusted_internal_missing_fraction": 0.01,
+  "weak_orb_weight": 0.5,
+  "advisory_orb_weight": 0.75,
+  "trusted_orb_weight": 1.0
+}

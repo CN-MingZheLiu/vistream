@@ -1,0 +1,48 @@
+{
+  "schema": "VIStream_native_runtime/v1",
+  "artifacts": {
+    "binary": {
+      "path": "/bundle/native_stage/prebuilt/ORB_SLAM3/Examples/Monocular/mono_kitti",
+      "sha256": "1f66b7ec8fae8905ccb80d065f9b177ffffda17357b46de31dbb0382170845d2"
+    },
+    "vocabulary": {
+      "path": "/bundle/native_stage/prebuilt/ORB_SLAM3/Vocabulary/ORBvoc.txt",
+      "sha256": "f8dd027f7a6cb88129821341194d7f2c75b77b3394257ddd0d2229863d1a3570"
+    },
+    "orb_library": {
+      "path": "/bundle/native_stage/prebuilt/ORB_SLAM3/lib/libORB_SLAM3.so",
+      "sha256": "b7b9bb60ea7e42783d880b2d3a2e9c5dff9f732befe07fb75a1b993289a3aba9"
+    },
+    "dbow2_library": {
+      "path": "/bundle/native_stage/prebuilt/ORB_SLAM3/Thirdparty/DBoW2/lib/libDBoW2.so",
+      "sha256": "3ac89669dd7faf24ad449889ab74c16c7a922d4a83dfd7750022244033ba7887"
+    },
+    "g2o_library": {
+      "path": "/bundle/native_stage/prebuilt/ORB_SLAM3/Thirdparty/g2o/lib/libg2o.so",
+      "sha256": "e143729802e052298ac6cdd03ad3b70b3b7990595111d8262fd627cc5b4ca1a5"
+    },
+    "build_record": {
+      "path": "/bundle/native_stage/target_source/NATIVE_BUILD.json",
+      "sha256": "1b7b9a8d5e3ec986c2cb0c944d213ca2563daa8b7ef0e446133fd8ec024779db"
+    },
+    "source_manifest": {
+      "path": "/bundle/native_stage/vendor/NATIVE_SOURCE_STATE.json",
+      "sha256": "0d287cecccd1708a55e641b582404cfc1598e14752673e1adbecae38635ceebd"
+    },
+    "source_diff": {
+      "path": "/bundle/native_stage/vendor/ORB_WORKTREE_DIFF.patch",
+      "sha256": "88233ce3eaaaf7a6f20f0dbe537a804877138b1f542641e7fca11e0fba593736"
+    },
+    "shutdown_patch": {
+      "path": "/bundle/native_stage/target_source/orb_shutdown_barrier.patch",
+      "sha256": "0209357681c5a3741a951d14ab9002ef08e600e942f28c598b740a2bd3911e01"
+    }
+  },
+  "library_dirs": [
+    "/bundle/native_stage/prebuilt/ORB_SLAM3/lib",
+    "/bundle/native_stage/prebuilt/ORB_SLAM3/Thirdparty/DBoW2/lib",
+    "/bundle/native_stage/prebuilt/ORB_SLAM3/Thirdparty/g2o/lib",
+    "/bundle/native_stage/prebuilt/OpenCV-4.5.5/install/lib",
+    "/bundle/native_stage/prebuilt/Pangolin/install/lib"
+  ]
+}

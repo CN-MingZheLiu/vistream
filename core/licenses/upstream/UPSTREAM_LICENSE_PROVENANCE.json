@@ -1,0 +1,22 @@
+[
+  {
+    "component": "DBoW2",
+    "official_repository": "https://github.com/dorian3d/DBoW2",
+    "source_url": "https://raw.githubusercontent.com/dorian3d/DBoW2/3924753db6145f12618e7de09b7e6b258db93c6e/LICENSE.txt",
+    "repository_HEAD_from_git_ls_remote": "3924753db6145f12618e7de09b7e6b258db93c6e",
+    "local_path": "upstream/DBoW2-LICENSE.txt",
+    "sha256": "c02e19ed871eb9dd11b01db600d3f3601c5a03c4121f6baeb2ebe215ecbeaf23",
+    "bytes": 2159,
+    "provenance_boundary": "Official upstream license linked by archived ORB fork README. Fork checkout lacked LICENSE.txt; no claim this independently identifies fork code commit or changes applicable obligations. GitHub API rate limit prevented license-history lookup; content pinned by actual repository HEAD."
+  },
+  {
+    "component": "DLib",
+    "official_repository": "https://github.com/dorian3d/DLib",
+    "source_url": "https://raw.githubusercontent.com/dorian3d/DLib/16ceae3e5e6bfcc67d52297f1b0ce9c0072bb0d4/LICENSE.txt",
+    "repository_HEAD_from_git_ls_remote": "16ceae3e5e6bfcc67d52297f1b0ce9c0072bb0d4",
+    "local_path": "upstream/DLib-LICENSE.txt",
+    "sha256": "83e2a4a816abbaa39c0d318fe793727c0ed8cce91c0f11a525ff737d0d39c1ee",
+    "bytes": 3152,
+    "provenance_boundary": "Official upstream license linked by archived ORB fork README. Fork checkout lacked LICENSE.txt; no claim this independently identifies fork code commit or changes applicable obligations. GitHub API rate limit prevented license-history lookup; content pinned by actual repository HEAD."
+  }
+]

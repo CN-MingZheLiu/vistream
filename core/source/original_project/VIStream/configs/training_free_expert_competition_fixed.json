@@ -1,0 +1,9 @@
+{
+  "rotation_residual_weight": 1.0,
+  "direction_residual_weight": 1.0,
+  "minimum_edges": 2,
+  "minimum_relative_energy_improvement": 0.20,
+  "relative_improvement_width": 0.05,
+  "route_threshold": 0.50,
+  "maximum_composition_path_change_ratio": 0.50
+}

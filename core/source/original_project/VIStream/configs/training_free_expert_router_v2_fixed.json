@@ -1,0 +1,18 @@
+{
+  "forward_center": 0.8,
+  "forward_width": 0.05,
+  "planar_center": 0.98,
+  "planar_width": 0.01,
+  "imu_route_threshold": 0.5,
+  "forward_sign_threshold": 0.9,
+  "maximum_path_change_ratio": 0.5,
+  "weak_revisit_gate": "frozen_descriptor_consistency",
+  "weak_revisit_minimum_separation": 40,
+  "weak_revisit_nms_radius": 8,
+  "weak_revisit_maximum_pairs": 30,
+  "weak_revisit_minimum_score": 0.88,
+  "weak_revisit_maximum_path_closure": 0.30,
+  "weak_revisit_minimum_pairs": 4,
+  "weak_revisit_allow_short_sequence": true,
+  "weak_revisit_short_sequence_frames": 64
+}

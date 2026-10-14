@@ -1,0 +1,22 @@
+Metadata-Version: 2.4
+Name: lingbot-map
+Version: 0.1.0
+Summary: LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction
+Requires-Python: >=3.10
+License-File: LICENSE.txt
+Requires-Dist: Pillow
+Requires-Dist: huggingface_hub
+Requires-Dist: einops
+Requires-Dist: safetensors
+Requires-Dist: opencv-python
+Requires-Dist: tqdm
+Requires-Dist: scipy
+Provides-Extra: vis
+Requires-Dist: viser>=0.2.23; extra == "vis"
+Requires-Dist: trimesh; extra == "vis"
+Requires-Dist: matplotlib; extra == "vis"
+Requires-Dist: onnxruntime; extra == "vis"
+Requires-Dist: requests; extra == "vis"
+Provides-Extra: demo
+Requires-Dist: lingbot-map[vis]; extra == "demo"
+Dynamic: license-file

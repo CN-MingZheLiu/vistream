@@ -1,0 +1,13 @@
+{
+  "scope": "Observed versions in the earlier full-bundle execution, not an installation lock for this source-only release.",
+  "python": "3.10.20",
+  "platform": "Ubuntu 22.04 Linux x86_64, glibc 2.35",
+  "nvidia_driver": "550.127.08",
+  "versions": {
+    "torch": "2.8.0+cu128",
+    "cuda_build": "12.8",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "opencv": "5.0.0"
+  }
+}

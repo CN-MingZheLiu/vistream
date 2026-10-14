@@ -1,0 +1,103 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 016e743..feae73b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,9 +30,9 @@ endif()
+ 
+ LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
+ 
+-find_package(OpenCV 4.4)
++find_package(OpenCV REQUIRED)
+    if(NOT OpenCV_FOUND)
+-      message(FATAL_ERROR "OpenCV > 4.4 not found.")
++      message(FATAL_ERROR "OpenCV >= 3.4 not found.")
+    endif()
+ 
+ MESSAGE("OPENCV VERSION:")
+diff --git a/Examples/Monocular-Inertial/mono_inertial_euroc.cc b/Examples/Monocular-Inertial/mono_inertial_euroc.cc
+index b9f320f..402ec23 100644
+--- a/Examples/Monocular-Inertial/mono_inertial_euroc.cc
++++ b/Examples/Monocular-Inertial/mono_inertial_euroc.cc
+@@ -46,6 +46,8 @@ int main(int argc, char *argv[])
+         return 1;
+     }
+ 
++    cv::setRNGSeed(1234);
++
+     const int num_seq = (argc-3)/2;
+     cout << "num_seq = " << num_seq << endl;
+     bool bFileName= (((argc-3) % 2) == 1);
+@@ -117,7 +119,7 @@ int main(int argc, char *argv[])
+     cout.precision(17);
+ 
+     // Create SLAM system. It initializes all system threads and gets ready to process frames.
+-    ORB_SLAM3::System SLAM(argv[1],argv[2],ORB_SLAM3::System::IMU_MONOCULAR, true);
++    ORB_SLAM3::System SLAM(argv[1],argv[2],ORB_SLAM3::System::IMU_MONOCULAR, false);
+     float imageScale = SLAM.GetImageScale();
+ 
+     double t_resize = 0.f;
+diff --git a/Examples/Monocular-Inertial/mono_inertial_tum_vi.cc b/Examples/Monocular-Inertial/mono_inertial_tum_vi.cc
+index bd84ce0..a4b9ed2 100644
+--- a/Examples/Monocular-Inertial/mono_inertial_tum_vi.cc
++++ b/Examples/Monocular-Inertial/mono_inertial_tum_vi.cc
+@@ -56,6 +56,8 @@ int main(int argc, char **argv)
+         return 1;
+     }
+ 
++    cv::setRNGSeed(1234);
++
+ 
+     // Load all sequences:
+     int seq;
+@@ -116,7 +118,7 @@ int main(int argc, char **argv)
+     cout << "IMU data in the sequence: " << nImu << endl << endl;*/
+ 
+     // Create SLAM system. It initializes all system threads and gets ready to process frames.
+-    ORB_SLAM3::System SLAM(argv[1],argv[2],ORB_SLAM3::System::IMU_MONOCULAR, true, 0, file_name);
++    ORB_SLAM3::System SLAM(argv[1],argv[2],ORB_SLAM3::System::IMU_MONOCULAR, false, 0, file_name);
+     float imageScale = SLAM.GetImageScale();
+ 
+     double t_resize = 0.f;
+diff --git a/Examples/Monocular/mono_kitti.cc b/Examples/Monocular/mono_kitti.cc
+index 404c824..4761897 100644
+--- a/Examples/Monocular/mono_kitti.cc
++++ b/Examples/Monocular/mono_kitti.cc
+@@ -39,6 +39,8 @@ int main(int argc, char **argv)
+         return 1;
+     }
+ 
++    cv::setRNGSeed(1234);
++
+     // Retrieve paths to images
+     vector<string> vstrImageFilenames;
+     vector<double> vTimestamps;
+@@ -47,7 +49,7 @@ int main(int argc, char **argv)
+     int nImages = vstrImageFilenames.size();
+ 
+     // Create SLAM system. It initializes all system threads and gets ready to process frames.
+-    ORB_SLAM3::System SLAM(argv[1],argv[2],ORB_SLAM3::System::MONOCULAR,true);
++    ORB_SLAM3::System SLAM(argv[1],argv[2],ORB_SLAM3::System::MONOCULAR,false);
+     float imageScale = SLAM.GetImageScale();
+ 
+     // Vector for tracking time statistics
+@@ -147,8 +149,9 @@ int main(int argc, char **argv)
+     cout << "median tracking time: " << vTimesTrack[nImages/2] << endl;
+     cout << "mean tracking time: " << totaltime/nImages << endl;
+ 
+-    // Save camera trajectory
+-    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");    
++    // Save both the optimized keyframes and every successfully tracked frame.
++    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");
++    SLAM.SaveTrajectoryEuRoC("FrameTrajectory.txt");
+ 
+     return 0;
+ }
+@@ -172,7 +175,7 @@ void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilena
+         }
+     }
+ 
+-    string strPrefixLeft = strPathToSequence + "/image_0/";
++    string strPrefixLeft = strPathToSequence + "/image_2/";
+ 
+     const int nTimes = vTimestamps.size();
+     vstrImageFilenames.resize(nTimes);

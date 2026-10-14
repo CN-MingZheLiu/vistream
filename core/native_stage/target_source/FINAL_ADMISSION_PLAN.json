@@ -1,0 +1,19 @@
+{
+  "policy": {
+    "minimum_geometry_r2": 0.75,
+    "minimum_spatial_variance": 1e-12,
+    "distance_window_increments": 16,
+    "minimum_windows": 5,
+    "maximum_local_scale_spread": 2.0
+  },
+  "applicability": "Only if the existing base router selected selected_head=dense_native_open_road and selected_expert=dpvo with route_enabled=true. Other heads transfer directions while retaining visual per-step lengths; they cannot provide the required native-scale reference.",
+  "source_evidence": "training_free_consensus_moe.py: dense_native selected at lines 383-384; direction heads at 385-389. training_free_dpvo_expert.py: direction_transfer explicitly reuses visual step norms.",
+  "development_context": "Refinement corrects the invalid applicability assumption in the broad local-scale prototype; its diagnostics and scores are retained. Thresholds unchanged. No per-sequence decisions or ground-truth input. Benchmark outcomes already observed; not an unseen evaluation or strict historical configuration.",
+  "validation": "All 22 initial and all 22 fixed-native outputs; keep every outcome",
+  "files": {
+    "admission_reference.py": "9f377acd7be860ae1a2f52505e53a29edde7845f1b5618b2dedde0ac775e261e",
+    "geometry_admission_local.py": "6ad95a38e0363ea50fac5847588a4a8bdadb1bf6779933b3329f2e8553e4c8b6",
+    "geometry_admission.py": "5b13ddd85a06a3f7841fa842d6732ac0bb0e7e9331ae77e2070c8623570d2e30",
+    "run_final_fusion.py": "2a5cbf726cdc5fe2868c1c78d2c5cb45e4f9f369fc7eb6e17e3fb18323e9dca1"
+  }
+}

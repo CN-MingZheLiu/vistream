@@ -1,0 +1,23 @@
+{
+  "visual_abstention_score": 0.5,
+  "route_threshold": 0.5,
+  "softmax_temperature": 0.1,
+  "minimum_direction_consensus_fraction": 0.9,
+  "direction_consensus_width": 0.05,
+  "maximum_rotation_disagreement_p90_rad": 0.01,
+  "rotation_disagreement_width_rad": 0.005,
+  "closed_loop_endpoint_ratio": 0.05,
+  "closed_loop_endpoint_width": 0.015,
+  "loop_geometry_endpoint_ratio": 0.05,
+  "loop_geometry_endpoint_width": 0.02,
+  "native_minimum_endpoint_ratio": 0.6,
+  "native_endpoint_width": 0.1,
+  "native_maximum_scale_log_disagreement": 0.5,
+  "native_scale_log_width": 0.2,
+  "touring_minimum_frames": 400,
+  "touring_frame_width": 64.0,
+  "touring_minimum_endpoint_ratio": 0.05,
+  "touring_minimum_endpoint_width": 0.025,
+  "touring_maximum_endpoint_ratio": 0.3,
+  "touring_maximum_endpoint_width": 0.05
+}

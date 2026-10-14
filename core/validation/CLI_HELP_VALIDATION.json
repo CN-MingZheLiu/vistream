@@ -1,0 +1,33 @@
+{
+  "scope": "Argument-parser smoke checks only, no inference or compilation",
+  "checks": [
+    {
+      "script": "scripts/run_kitti.py",
+      "argument": "--help",
+      "returncode": 0,
+      "stdoutBytes": 1675,
+      "stderr": ""
+    },
+    {
+      "script": "scripts/bootstrap.py",
+      "argument": "--help",
+      "returncode": 0,
+      "stdoutBytes": 309,
+      "stderr": ""
+    },
+    {
+      "script": "native_stage/build_from_sources.py",
+      "argument": "--help",
+      "returncode": 0,
+      "stdoutBytes": 664,
+      "stderr": ""
+    },
+    {
+      "script": "evaluation/verify_results.py",
+      "argument": "--help",
+      "returncode": 0,
+      "stdoutBytes": 430,
+      "stderr": ""
+    }
+  ]
+}

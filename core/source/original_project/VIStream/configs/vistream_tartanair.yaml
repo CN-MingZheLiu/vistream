@@ -1,0 +1,88 @@
+model:
+  lingbot_source: vendor
+  lingbot_checkpoint: weights/lingbot-map-long.pt
+  airimu_checkpoint: weights/airimu-kitti-best_model.ckpt
+  lingbot_commit: 4cd986009b9adeded8a4e740919221940dedeffe
+  image_size: 518
+  patch_size: 14
+  warmup_frames: 8
+  sliding_window_size: -1
+  use_sdpa: true
+  enable_depth: true
+  enable_points: false
+  enable_local_points: false
+  # Legacy token-fusion profile retained only for old checkpoint ablations.
+  fusion_mode: token
+  imu_architecture: airimu
+  adapter:
+    token_dim: 2048
+    motion_dim: 256
+    raw_feature_dim: 192
+    low_rank_dim: 128
+    num_heads: 8
+    history_frames: 8
+    stats_dim: 10
+    dropout: 0.0
+    stage: rotation
+    translation_gain_max: 0.2
+    safe_gate_init_logit: -4.0
+
+data:
+  tartanair_root: /data2/huangshuaixin/tartanair-v2
+  validation_environments: 15
+  split_seed: 42
+  window_frames: 16
+  stride_frames: 8
+  max_imu_samples: 32
+  acc_source: acc
+  num_workers: 4
+
+train:
+  seed: 2026
+  epochs: 20
+  batch_size_per_gpu: 1
+  gradient_accumulation: 4
+  learning_rate: 0.00005
+  weight_decay: 0.01
+  grad_clip_norm: 1.0
+  validate_every: 1
+  save_every_steps: 2000
+  output_dir: outputs/tartanair_se3
+  bf16: false
+  stage: rotation
+
+loss:
+  relative_translation: 1.0
+  relative_rotation: 0.7
+  anchored_absolute: 0.5
+  velocity: 0.2
+  long_drift: 0.6
+  imu_consistency: 0.05
+  depth: 0.25
+  depth_gradient: 0.10
+  world_points: 0.05
+  residual_regularizer: 0.0001
+  oracle_gate: 0.2
+  safe_hinge: 0.5
+
+evaluation:
+  alignment: [se3, sim3]
+  max_depth_m: 80.0
+  voxel_size_m: 0.05
+  f1_thresholds_m: [0.05, 0.10]
+  kitti_odometry_root: /data2/huangshuaixin/LingBot-Map-relocalization/kitti_odometry/dataset
+  kitti_raw_root: /data2/huangshuaixin/kitti_raw
+  kitti_sequences: ["00", "01", "02", "04", "05", "06", "07", "08", "09", "10"]
+  euroc_root: /data1/mingzheliu/datasets/EuRoc_flat
+  euroc_sequences:
+    - MH_01_easy
+    - MH_02_easy
+    - MH_03_medium
+    - MH_04_difficult
+    - MH_05_difficult
+    - V1_01_easy
+    - V1_02_medium
+    - V2_01_easy
+    - V2_02_medium
+  kaist_converted_root: /home/mingzheliu/MZL_workplace/IMU-lingbot-1.2/data/KAIST_VIO_euroc
+  kaist_camera_yaml: /data1/mingzheliu/datasets/KAIST_VIO/kaistviodataset/config/cam-imu.yaml

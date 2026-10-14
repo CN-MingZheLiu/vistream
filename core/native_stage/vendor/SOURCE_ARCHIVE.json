@@ -1,0 +1,25 @@
+{
+  "sha256": "63b73a30964ea4ced55cb1e055ba0652f3d234189467b3bafbbf642f6943ee0d",
+  "bytes": 16783027,
+  "scope": "Complete tracked build sources; exclude example sensor tables/media/model assets and runtime vocabulary; retain license notices",
+  "repositories": {
+    "ORB_SLAM3": {
+      "commit": "4452a3c4ab75b1cde34e5505a36ec3f9edcdc4c4",
+      "tracked_diff_sha256": "88233ce3eaaaf7a6f20f0dbe537a804877138b1f542641e7fca11e0fba593736",
+      "file_count": 430,
+      "excluded_count": 525
+    },
+    "OpenCV-4.5.5": {
+      "commit": "dad26339a975b49cfb6c7dbe4bd5276c9dcb36e2",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file_count": 5213,
+      "excluded_count": 1757
+    },
+    "Pangolin": {
+      "commit": "dd801d244db3a8e27b7fe8020cd751404aa818fd",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file_count": 416,
+      "excluded_count": 1
+    }
+  }
+}

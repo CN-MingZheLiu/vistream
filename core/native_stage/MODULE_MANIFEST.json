@@ -1,0 +1,70 @@
+{
+  "schema": "VIStream_portable_native_module/v1",
+  "target": "2026-10-12 repaired side native shutdown + final reference-aware admission",
+  "status": "SOURCE_AND_PORTABLE_WRAPPERS_READY",
+  "source_archive": {
+    "sha256": "63b73a30964ea4ced55cb1e055ba0652f3d234189467b3bafbbf642f6943ee0d",
+    "bytes": 16783027,
+    "scope": "Complete tracked build sources; exclude example sensor tables/media/model assets and runtime vocabulary; retain license notices",
+    "repositories": {
+      "ORB_SLAM3": {
+        "commit": "4452a3c4ab75b1cde34e5505a36ec3f9edcdc4c4",
+        "tracked_diff_sha256": "88233ce3eaaaf7a6f20f0dbe537a804877138b1f542641e7fca11e0fba593736",
+        "file_count": 430,
+        "excluded_count": 525
+      },
+      "OpenCV-4.5.5": {
+        "commit": "dad26339a975b49cfb6c7dbe4bd5276c9dcb36e2",
+        "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file_count": 5213,
+        "excluded_count": 1757
+      },
+      "Pangolin": {
+        "commit": "dd801d244db3a8e27b7fe8020cd751404aa818fd",
+        "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file_count": 416,
+        "excluded_count": 1
+      }
+    }
+  },
+  "validation": {
+    "synthetic_geometry_and_fusion": "PASS",
+    "synthetic_native_administration": "PASS",
+    "source_extract_and_patch": "BYTE_EXACT_TARGET",
+    "full_native_source_compilation": false,
+    "fresh_native_inference_by_this_module_task": false
+  },
+  "files": {
+    "README.txt": "a0e66710309c343475d629344d35840e64813f035e6ce0bda0e2fffe4972dcad",
+    "admission_reference.py": "9f377acd7be860ae1a2f52505e53a29edde7845f1b5618b2dedde0ac775e261e",
+    "build_from_sources.py": "6d5e5f9b1384058a46ff177d93c8b22de01eebc690292ce516b00c4202399e43",
+    "geometry_admission.py": "5b13ddd85a06a3f7841fa842d6732ac0bb0e7e9331ae77e2070c8623570d2e30",
+    "geometry_admission_local.py": "6ad95a38e0363ea50fac5847588a4a8bdadb1bf6779933b3329f2e8553e4c8b6",
+    "make_runtime.py": "fab7523a2a37927fcc93e67f9d33b74ed09d20f99b63f19b8ea66539dd05d8ee",
+    "portable_common.py": "0f58c2158e003b2b0d3ead1029f7590611ed52ef6567de95b7065f1d464125b7",
+    "run_fusion.py": "6c31b97848063a48f9df4b80cc87cf38300c9ca30df92736cf6849947e832f44",
+    "run_native.py": "59a016b7d446fad14d3d15861ee63f0d47ea6eb50524690e530e26681274fadb",
+    "runtime.json": "c5df92942f3bd6d497a14d36e96c21b8ec2f4280f233de3d2eb4edfeb885e42d",
+    "target_source/FINAL_ADMISSION_PLAN.json": "64e61f7244ab2f198f302de1133ef6a7b7a8043eb4d7160904e45746341129cc",
+    "target_source/NATIVE_BUILD.json": "1b7b9a8d5e3ec986c2cb0c944d213ca2563daa8b7ef0e446133fd8ec024779db",
+    "target_source/System.cc": "9181f067a1dd4483e845afbf598bfefe8d5c6628f735baca6d46d1cff125a0b7",
+    "target_source/build_shutdown_fix.py": "c55fa138193c1e2fa0bfb635a1caca975507a2b699e4bc16c80ae34781bf6903",
+    "target_source/orb_shutdown_barrier.patch": "0209357681c5a3741a951d14ab9002ef08e600e942f28c598b740a2bd3911e01",
+    "target_source/run_final_fusion.py": "2a5cbf726cdc5fe2868c1c78d2c5cb45e4f9f369fc7eb6e17e3fb18323e9dca1",
+    "target_source/run_fixed_orb.py": "44b15873ac03d6225d4c667a5fefde02e39d718a451d84a3f10f10f0964c28a4",
+    "tests/LOCAL_PREFLIGHT_LIMITATION.json": "e34766fa63c146e298747675c25458c2714d2358ec95406f8abb3e786839725b",
+    "tests/NATIVE_RECEIPT_TEST_RESULT.json": "22bae3eb01180fee7b2826a87e1f34366c8fc8d34ac565665abd70efce59bbbb",
+    "tests/SOURCE_COLLECTION_ATTEMPT1.json": "c1e313825ae7aaf7e1f58315e822bd45f967a807f4ebc680dc013dc8cc857191",
+    "tests/SOURCE_REBUILD_PLAN_TEST.json": "0fee8bf4c1afe4efb0eb068e4e190393ce3247f790a3078579763c0b7214c961",
+    "tests/SYNTHETIC_TEST_RESULT.json": "cfc8720c222abe21404ce3657998c5042a9a9561c157b875f8f49e541f6b57a0",
+    "tests/test_native_receipts.py": "b09bb0f7aaaab48517677868462115c2d5301b712d88cd810e5ed0bc6da5e3af",
+    "tests/test_portable_stage.py": "54bdbb4746f8a60e9d296de159095a84900863749809071924584785fa217ff9",
+    "vendor/NATIVE_SOURCE_MANIFEST.json": "f600b7369f95726d432ea89c1f849b554c723318d1be6c01989ac1724e2607ef",
+    "vendor/NATIVE_SOURCE_STATE.json": "0d287cecccd1708a55e641b582404cfc1598e14752673e1adbecae38635ceebd",
+    "vendor/ORB_WORKTREE_DIFF.patch": "88233ce3eaaaf7a6f20f0dbe537a804877138b1f542641e7fca11e0fba593736",
+    "vendor/SOURCE_ARCHIVE.json": "484ed0d5595a295d534d2fe1e6dc84278718e7fdfadebe01ba49bd294d40dfc3",
+    "vendor/native_sources.tar.gz": "63b73a30964ea4ced55cb1e055ba0652f3d234189467b3bafbbf642f6943ee0d"
+  },
+  "remote_prebuilt_assets": "prebuilt/ and runtime.json are staged on h20-1; root package collector includes them without datasets or cached predictions",
+  "prediction_files_in_module": []
+}

@@ -1,0 +1,7 @@
+{
+  "translation_mode": "local_window",
+  "translation_window_frames": 32,
+  "maximum_step_change_ratio": 1.0,
+  "maximum_path_change_ratio": 0.2,
+  "warmup_intervals": 8
+}

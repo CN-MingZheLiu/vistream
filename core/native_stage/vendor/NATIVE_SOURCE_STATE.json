@@ -1,0 +1,22 @@
+{
+  "schema": "VIStream_native_source_state/v1",
+  "sources": {
+    "ORB_SLAM3": {
+      "commit": "4452a3c4ab75b1cde34e5505a36ec3f9edcdc4c4",
+      "tracked_diff_sha256": "88233ce3eaaaf7a6f20f0dbe537a804877138b1f542641e7fca11e0fba593736",
+      "original_path": "/home/mingzheliu/VIStream/third_party/ORB_SLAM3"
+    },
+    "OpenCV-4.5.5": {
+      "commit": "dad26339a975b49cfb6c7dbe4bd5276c9dcb36e2",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/home/mingzheliu/VIStream/third_party/OpenCV-4.5.5"
+    },
+    "Pangolin": {
+      "commit": "dd801d244db3a8e27b7fe8020cd751404aa818fd",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/home/mingzheliu/VIStream/third_party/Pangolin"
+    }
+  },
+  "full_working_tree_archive": "native_sources.tar.gz",
+  "note": "Source archive is a separate per-file hash manifest; no existing generated predictions are included."
+}

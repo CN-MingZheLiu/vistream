@@ -1,0 +1,22 @@
+{
+  "minimum_separation": 40,
+  "nms_radius": 8,
+  "maximum_pairs": 300,
+  "loop_weight": 0.1,
+  "pose_graph": "rotation",
+  "maximum_evaluations": 100,
+  "descriptor": "resnet50_imagenet1k_v2",
+  "descriptor_input": [320, 192],
+  "verification": "sift_essential_ransac",
+  "sift_nfeatures": 4000,
+  "sift_contrast_threshold": 0.01,
+  "ratio_test": 0.72,
+  "minimum_matches": 100,
+  "minimum_inliers": 80,
+  "minimum_inlier_ratio": 0.8,
+  "environment_gate": "frozen_random_walk_mlp",
+  "environment_gate_center": 1.0,
+  "environment_gate_slope": 8.0,
+  "environment_gate_route_threshold": 0.5,
+  "environment_gate_minimum_edges": 2
+}

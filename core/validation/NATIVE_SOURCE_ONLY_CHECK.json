@@ -1,0 +1,6 @@
+{
+  "scope": "Native source tar file inventory and executable binary magic scan; no extraction, compilation or inference",
+  "fileCount": 6063,
+  "executableBinaryMagicMatches": [],
+  "archiveSha256": "63b73a30964ea4ced55cb1e055ba0652f3d234189467b3bafbbf642f6943ee0d"
+}

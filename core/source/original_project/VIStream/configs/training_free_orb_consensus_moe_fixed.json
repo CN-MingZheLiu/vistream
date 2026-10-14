@@ -1,0 +1,11 @@
+{
+  "minimum_tracking_completeness": 0.99,
+  "strong_closed_loop_endpoint_ratio": 0.05,
+  "partial_loop_endpoint_ratio": 0.2,
+  "strong_closed_loop_orb_weight": 1.0,
+  "partial_loop_orb_weight": 0.75,
+  "weak_loop_orb_weight": 0.5,
+  "open_road_endpoint_ratio": 0.5,
+  "open_road_orb_weight": 0.5,
+  "touring_advisory_orb_weight": 0.25
+}

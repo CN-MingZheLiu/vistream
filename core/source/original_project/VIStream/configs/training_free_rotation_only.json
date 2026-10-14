@@ -1,0 +1,7 @@
+{
+  "translation_mode": "none",
+  "translation_direction_gain": 0.0,
+  "maximum_step_change_ratio": 0.0,
+  "maximum_path_change_ratio": 0.0,
+  "warmup_intervals": 8
+}

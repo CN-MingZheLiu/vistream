@@ -1,0 +1,12 @@
+# Convenience dependencies for source development, not a full environment lock.
+# Separately install a suitable CUDA-enabled PyTorch and OpenCV build, and build
+# DPVO/DROID/LieTorch/native SLAM extensions. Checkpoints are also external.
+# NumPy/SciPy versions below match the recorded full-bundle runtime.
+numpy==2.2.6
+scipy==1.15.3
+PyYAML
+Pillow
+tqdm
+einops
+huggingface_hub
+safetensors

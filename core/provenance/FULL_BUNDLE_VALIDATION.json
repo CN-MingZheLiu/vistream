@@ -1,0 +1,89 @@
+{
+  "schema": "vistream-complete-inference-delivery-validation-v1",
+  "validated_at": "2026-10-12T15:57:50.556600+00:00",
+  "independent_inference_execution": "PASS",
+  "exact_target_numerical_reproduction": "NOT_REPRODUCED",
+  "run_id": "224bdbbf-d863-46fd-a81e-0fb4ec429038",
+  "sequence_count": 11,
+  "stage_count": 132,
+  "stage_statuses": {
+    "SUCCEEDED": 132
+  },
+  "native_orb_count": 22,
+  "prediction_count": 33,
+  "environment_restored_from_bundled_archive": true,
+  "actual_macro_mean_ate_rmse_m": {
+    "visual": 32.48667634836823,
+    "loop_off": 15.249139177523158,
+    "loop_on": 9.095139962136498
+  },
+  "target_macro_mean_ate_rmse_m": {
+    "visual": 32.48667634836823,
+    "loop_off": 15.08083551911737,
+    "loop_on": 10.406424994970628
+  },
+  "exact_tolerance_matches": 11,
+  "per_sequence_2dp_matches": 11,
+  "protocol": "Independent per-trajectory Umeyama Sim(3) translation ATE RMSE, all stride6+last support; equal-weight arithmetic mean over 11 sequences.",
+  "actual_run_schedule": {
+    "schema": "vistream-run-plan-v1",
+    "run_id": "224bdbbf-d863-46fd-a81e-0fb4ec429038",
+    "mode": "fresh_from_sensors",
+    "sequences": [
+      "00",
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10"
+    ],
+    "stages": [
+      "visual",
+      "raw_imu",
+      "loop_geometry",
+      "translation",
+      "router",
+      "dpvo",
+      "droid",
+      "base",
+      "orb_off",
+      "fusion_off",
+      "orb_on",
+      "fusion_on"
+    ],
+    "gpus": [
+      "GPU-97475c20-1083-7c99-334b-cea1468eb97e",
+      "GPU-605118b5-4147-318b-65fe-15761db8d561",
+      "GPU-4ca8abb3-1327-3b3f-5fb4-24d3487eb54d"
+    ],
+    "native_workers": 8,
+    "target": "2026-10-12 repaired KITTI configuration",
+    "gt_mounted": false,
+    "numerical_reproduction_not_assumed": true
+  },
+  "gt_opened_only_after_seal": true,
+  "predictions_unchanged_after_scoring": true,
+  "access_audit_status": "PASS",
+  "access_evidence_mode": "namespace_mounts",
+  "independent_read_only_review": {
+    "sealed_file_count": 821,
+    "all_sealed_files_present_and_hash_match": true,
+    "receipt_and_support_coverage": "PASS",
+    "numeric_mean_recompute": "PASS",
+    "reviewer": "kitti01_fusion_review"
+  },
+  "limitations": [
+    "Fresh execution finished successfully but did not reproduce all target numerical results, even at two-decimal precision for the 22 VI scores.",
+    "Current repaired admission is an offline whole-sequence policy; this is not the original paper frozen configuration.",
+    "Known DPVO custom-kernel and native threaded execution nondeterminism prevents an exact-repeat guarantee. The contribution of each source to this run has not been isolated.",
+    "This validation used 3 GPUs and 8 native workers. The recommended serial native schedule was not the schedule tested in this complete run.",
+    "Native sources and matching precompiled binaries are included; clean recompilation of all native projects was not performed.",
+    "This QA folder is metadata and score evidence, not a runnable copy of the generated run. Predicted trajectories and datasets are intentionally excluded from the delivery.",
+    "Namespace-mount access audit is not syscall tracing; host Linux ABI and NVIDIA driver are still required."
+  ]
+}
