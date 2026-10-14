@@ -1,0 +1,206 @@
+name: Import pinned VIStream core source
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import-vistream-core-source
+  cancel-in-progress: false
+
+jobs:
+  import-core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+      - name: Confirm a clean checkout
+        run: |
+          test -z "$(git status --porcelain)"
+      - name: Download and import the exact released source
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import os
+          from pathlib import Path, PurePosixPath
+          import shutil
+          import stat
+          import tempfile
+          import urllib.parse
+          import urllib.request
+          import zipfile
+          
+          URL = "https://github.com/CN-MingZheLiu/vistream/releases/download/core-code-20261014/VIStream_Core_Code_20261014.zip"
+          SHA256 = "211a4dba5e53a7f7f8fc8cd218ed6601a89847b753536af31f5335cb49ea0a8f"
+          ZIP_BYTES = 24374597
+          FILE_COUNT = 2837
+          EXPANDED_BYTES = 43866283
+          PREFIX = "VIStream_Core_Code_20261014/"
+          
+          
+          class GitHubReleaseRedirects(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, request, fp, code, message, headers, new_url):
+                  target = urllib.parse.urlsplit(new_url)
+                  allowed_hosts = {"github.com", "release-assets.githubusercontent.com", "objects.githubusercontent.com"}
+                  if target.scheme != "https" or target.hostname not in allowed_hosts or target.username or target.password or target.port not in (None, 443):
+                      raise RuntimeError("Release download redirected outside the allowed GitHub hosts")
+                  return super().redirect_request(request, fp, code, message, headers, new_url)
+          
+          
+          def sha256_file(path):
+              digest = hashlib.sha256()
+              with path.open("rb") as stream:
+                  for block in iter(lambda: stream.read(1024 * 1024), b""):
+                      digest.update(block)
+              return digest.hexdigest()
+          
+          
+          def download_archive(destination):
+              # No GitHub token, cookies, or user-supplied URLs are passed to this request.
+              opener = urllib.request.build_opener(GitHubReleaseRedirects())
+              request = urllib.request.Request(URL, headers={"User-Agent": "VIStream-Pinned-Core-Source-Importer"})
+              total = 0
+              with opener.open(request, timeout=90) as response, destination.open("xb") as output:
+                  if response.status != 200:
+                      raise RuntimeError("Release asset did not return HTTP 200")
+                  for block in iter(lambda: response.read(1024 * 1024), b""):
+                      total += len(block)
+                      if total > ZIP_BYTES:
+                          raise RuntimeError("Release archive exceeds the pinned byte count")
+                      output.write(block)
+              if total != ZIP_BYTES or sha256_file(destination) != SHA256:
+                  raise RuntimeError("Release archive does not match the pinned size and SHA256")
+              print(f"Verified pinned release archive: {total} bytes; SHA256 {SHA256}")
+          
+          
+          def validate_members(archive):
+              infos = archive.infolist()
+              if len(infos) != FILE_COUNT:
+                  raise RuntimeError("Unexpected ZIP member count")
+              members = {}
+              expanded = 0
+              for info in infos:
+                  name = info.filename
+                  if info.orig_filename != name or "\\" in name or "\x00" in name:
+                      raise RuntimeError("Ambiguous ZIP member name")
+                  if not name.startswith(PREFIX):
+                      raise RuntimeError("ZIP member has an unexpected archive prefix")
+                  relative = name[len(PREFIX):]
+                  parts = relative.split("/")
+                  if not relative or relative.startswith("/") or any(part in {"", ".", "..", ".git"} for part in parts):
+                      raise RuntimeError("Unsafe ZIP member path")
+                  path = PurePosixPath(relative)
+                  if path.is_absolute() or str(path) != relative or relative in members:
+                      raise RuntimeError("Absolute, normalized, or duplicate ZIP member path")
+                  mode = info.external_attr >> 16
+                  if info.is_dir() or stat.S_IFMT(mode) not in (0, stat.S_IFREG):
+                      raise RuntimeError("Only regular files are permitted; symlinks and devices are rejected")
+                  if info.flag_bits & 1 or info.file_size < 0 or info.file_size > 32 * 1024 * 1024:
+                      raise RuntimeError("Encrypted or oversized ZIP member")
+                  if info.compress_type not in (zipfile.ZIP_STORED, zipfile.ZIP_DEFLATED):
+                      raise RuntimeError("Unexpected ZIP compression method")
+                  expanded += info.file_size
+                  if expanded > EXPANDED_BYTES:
+                      raise RuntimeError("ZIP expanded size exceeds the pinned limit")
+                  members[relative] = info
+              if expanded != EXPANDED_BYTES:
+                  raise RuntimeError("Unexpected ZIP expanded size")
+              for relative in members:
+                  for parent in PurePosixPath(relative).parents:
+                      if str(parent) in members:
+                          raise RuntimeError("A ZIP member is also another member's parent")
+              return members
+          
+          
+          def extract_validated(archive_path, destination):
+              with zipfile.ZipFile(archive_path) as archive:
+                  members = validate_members(archive)
+                  destination.mkdir()
+                  for relative, info in members.items():
+                      target = destination.joinpath(*PurePosixPath(relative).parts)
+                      target.parent.mkdir(parents=True, exist_ok=True)
+                      count = 0
+                      with archive.open(info) as source, target.open("xb") as output:
+                          for block in iter(lambda: source.read(1024 * 1024), b""):
+                              count += len(block)
+                              if count > info.file_size:
+                                  raise RuntimeError("Extracted member exceeds its declared size")
+                              output.write(block)
+                      if count != info.file_size:
+                          raise RuntimeError("Extracted member has an unexpected size")
+                      # Preserve executable intent without setuid/setgid or writable groups.
+                      target.chmod(0o755 if (info.external_attr >> 16) & 0o111 else 0o644)
+              return len(members)
+          
+          
+          def tree_signature(directory):
+              if directory.is_symlink() or not directory.is_dir():
+                  raise RuntimeError("Existing core must be a real directory")
+              result = {}
+              for path in directory.rglob("*"):
+                  mode = path.lstat().st_mode
+                  if stat.S_ISLNK(mode):
+                      raise RuntimeError("Existing core contains a symlink")
+                  if stat.S_ISDIR(mode):
+                      continue
+                  if not stat.S_ISREG(mode):
+                      raise RuntimeError("Existing core contains a non-regular file")
+                  result[path.relative_to(directory).as_posix()] = (path.stat().st_size, sha256_file(path), bool(mode & 0o111))
+              return result
+          
+          
+          def install_core(candidate, workspace):
+              core = workspace / "core"
+              if core.exists() or core.is_symlink():
+                  if tree_signature(core) != tree_signature(candidate):
+                      raise RuntimeError("Existing core differs from the pinned release; refusing to overwrite it")
+                  print("Existing core exactly matches the pinned source; leaving it unchanged")
+                  return
+              shutil.copytree(candidate, core)
+              print("Installed the pinned source under core/ without modifying other repository files")
+          
+          
+          def main():
+              if os.environ.get("GITHUB_REPOSITORY", "").lower() != "cn-mingzheliu/vistream":
+                  raise RuntimeError("This importer is restricted to CN-MingZheLiu/vistream")
+              workspace = Path(os.environ["GITHUB_WORKSPACE"]).resolve()
+              with tempfile.TemporaryDirectory(prefix="vistream-core-", dir=os.environ["RUNNER_TEMP"]) as temp:
+                  work = Path(temp)
+                  archive = work / "source.zip"
+                  download_archive(archive)
+                  candidate = work / "candidate"
+                  count = extract_validated(archive, candidate)
+                  install_core(candidate, workspace)
+                  print(f"Validated and imported {count} regular files")
+          
+          
+          if __name__ == "__main__":
+              main()
+          PY
+      - name: Validate original hashes and Python syntax only
+        run: python3 core/validate_source.py
+      - name: Commit only core source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add --force --all -- core/
+          python3 - <<'PY'
+          import subprocess
+          staged = subprocess.check_output(["git", "diff", "--cached", "--name-only", "-z"]).split(b"\0")
+          if any(name and not name.startswith(b"core/") for name in staged):
+              raise SystemExit("Refusing to commit paths outside core/")
+          PY
+          if git diff --cached --quiet -- core/; then
+            echo "The exact core source is already committed; no changes to push."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Add pinned VIStream core source and evaluation tools"
+          git push origin HEAD:refs/heads/main
